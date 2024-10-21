@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигация</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #333;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="{% url 'home3' %}" target="contentFrame">Общие сведения</a>
+    <a href="{% url 'fam3' %}" target="contentFrame">Семья</a>
+    <a href="{% url 'sport3' %}" target="contentFrame">Спорт</a>
+    <a href="{% url 'cs3' %}" target="contentFrame">Киберспорт</a>
+    <a href="{% url 'plains3' %}" target="contentFrame">Перелеты, поезда</a>
+    <a href="{% url 'frames2' %}" target="_top">Основная страница задания 2</a>
+</nav>
+</body>
+</html>

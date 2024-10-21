@@ -1,0 +1,43 @@
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>{{ title }}</title>-->
+<!--    <link type="text/css" href="{% static 'conprogs/css/styles.css' %}" rel="stylesheet"/>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<ul>-->
+<!--    <li><a href="{% url 'home' %}">MAIN</a></li>-->
+<!--    {% for m in menu %}-->
+<!--    {% if not forloop.last %}-->
+<!--    <li class="last">{% endif %}-->
+<!--        <a href="{% url m.url_name %}">{{ m.title }}</a>-->
+<!--    </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+<!--{% block content %} {% endblock %}-->
+<!--</body>-->
+<!--</html>-->
+
+<!--index-->
+<!--{% extends 'base.html' %}-->
+
+<!--{% block content %}-->
+<!--<h1>{{ title }}</h1>-->
+
+<!--{% include 'conprogs/includes/nav.html' %}-->
+<!--<ul>-->
+<!--    {% for t in tasks %}-->
+<!--    <li>-->
+<!--        <h2>{{ t.title }}</h2>-->
+<!--        <p>{{ t.content }}</p>-->
+<!--        <p><a href="{% url 'task' t.id%}">Check Tasks</a></p>-->
+<!--        {% if not forloop.last  %}-->
+<!--        <hr>-->
+<!--        {% endif %}-->
+<!--    </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+<!--{% endblock %}-->

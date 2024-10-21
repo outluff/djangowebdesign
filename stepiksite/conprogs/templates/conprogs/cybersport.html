@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Киберспорт</title>
+    <link rel="stylesheet" href="{% static 'conprogs/css/styles.css' %}">
+    <link type="text/css" href="{% static 'conprogs/css/styles_unique.css' %}" rel="stylesheet"/>
+</head>
+<body>
+
+<header>
+    <h1>Киберспорт</h1>
+</header>
+<ul>
+    <li><a href="{% url 'home' %}">MAIN</a></li>
+    {% for m in menu %}
+    <li class="last">
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<section>
+    <p class="section16">
+        <span class="bold">Начало.</span> Мое увлечение компьютерным спортом началось с отца. Он начал играть в <span
+            class="strike">CS 1.6</span> и
+        <span class="highlight">World of Tanks</span>. Я начал играть вместе с ним. Мы буквально боролись за
+        игровое время. Он был моим наставником и командиром. Мы были в топе сильных игроков нашего города. Мы создали
+        свой взвод и участвовали в местных турнирах. Занимали призовые места.
+    </p>
+
+    <p class="section17">
+        <span class="italic">Новая глава.</span> Далее на горизонте появился  <span class="underline">Warface</span>. Игра сильно привлекла мой
+        интерес и забрала
+        достаточно свободного времени. С друзьями мы были в топ 100 мира. Мы тренировались, побеждали на турнирах.
+        Посещали турниры в других городах. Некоторые из нас заключали контракты с крупными организациями и поставили
+        свою жизнь на киберспорт.
+    </p>
+
+    <p class="section18">
+        <span class="bold">Футбол вне поля?</span> Радость от крутых игроков, победы на турнирах, поражения в финале.
+        Да, все это
+        о футболе, но в данном случае виртуальном.
+        <mark><span class="highlight">Схемы, тактики, тренировки</span></mark>
+        , все это было внутри игровой приставки. Грубо говоря, это жизнь в цифровом пространстве. Играя с людьми по
+        всему миру, ты набираешься опыта, далее повышаешь квалификацию и участвуешь в международных турнирах с
+        чемпионами мира и Европы.
+    </p>
+
+    <p class="section19">
+        <span class="del"><span>Не каждый выстрел вне закона.</span></span>
+        В игру <span class="italic"><span>Counter-Strike</span></span> мне было войти достаточно легко, имея опыт игры в
+        <u>Warface</u>. Изначально это
+        было для проведения досуга, далее это переросло во что-то большее. Попал в вузовскую команду по
+        <span class="bold"><span>CS</span></span>. Онлайн турниры, разлады и победы. Интересная глава в жизни. Игра для
+        миллионов людей по
+        всему миру.
+    </p>
+
+    <p class="section20">
+        <span class="bold">Может хватит?</span> Тяжело найти человека младше 30 лет, который ни разу не слышал об игре
+        <span class="underline">Dota 2</span>. Игра забирает нервы, силы, желание, но ты все равно
+        каждый раз возвращаешься и пытаешься доказать себе в первую очередь. Командные игры всегда будут интересны. В
+        первую очередь это способ социализации. Именно в этой игре я понял, что каждый человек – индивид, и не все люди
+        во время игры похожи на себя в реальной жизни.
+    </p>
+
+    <img src="{% static 'conprogs/images/img_3.png' %}" alt="Фото" style="width:300px;height:auto;">
+</section>
+<div class="navigation">
+    <a href="{% url 'sport' %}" class="nav-button" title="Назад">&lt;&lt; Назад</a>
+    <a href="{% url 'plains' %}" class="nav-button" title="Вперёд">Вперёд &gt;&gt;</a>
+</div>
+
+<footer>
+    <p>&copy; 2024 Лысенков Филипп</p>
+</footer>
+
+</body>
+</html>

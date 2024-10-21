@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перелеты, поезда</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #ffcc00;
+            color: black;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 90px;
+            height: 100px;
+            background-color: white;
+        }
+
+        .breadcrumbs {
+            background-color: #ffcc00;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .breadcrumbs a {
+            text-decoration: none;
+            color: black;
+            margin: 0 10px;
+        }
+
+        .nav {
+            width: 200px;
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-right: 2px solid #2e8b57;
+            vertical-align: top;
+        }
+
+        .nav a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid transparent;
+            margin-bottom: 5px;
+        }
+
+        .nav a:hover {
+            background-color: #d0d0d0;
+        }
+
+        .content-wrapper {
+            padding: 20px;
+        }
+
+        .content-table {
+            width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        .content-table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 15px;
+            border: 1px solid black;
+        }
+
+        .footer {
+            background-color: #ffcc00;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #2e8b57;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .bg-yellow {
+            background-color: #ffcc00;
+        }
+
+        .bg-lightgray {
+            background-color: #d0d0d0;
+        }
+
+        .bg-lightblue {
+            background-color: #f5f5f5;
+        }
+
+        .bg-palegreen {
+            background-color: #98fb98;
+        }
+
+        .bg-lightcoral {
+            background-color: #f08080;
+        }
+
+        .bg-beige {
+            background-color: #f0e68c; }
+
+        .border-solid {
+            border: 1px solid black;
+        }
+
+        .border-dotted {
+            border: 2px dotted green;
+        }
+
+        .border-dashed {
+            border: 3px dashed blue;
+        }
+
+        .border-double {
+            border: 4px double red;
+        }
+
+        .border-groove {
+            border: 5px groove purple;
+        }
+
+        .border-ridge {
+            border: 6px ridge orange;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <img src="{% static 'conprogs/images/img_10.png' %}" alt="Логотип" width="100%">
+    </div>
+    <div>MY LIFE</div>
+    <div>Авторские сведения: Лысенков Филипп Сергеевич</div>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <td class="nav">
+                <div><b>Навигация</b></div>
+                <a href="{% url 'index2_3_lab4' %}">Общие сведения</a>
+                {% for m in menu_4_lab3 %}
+                <a href="{% url m.url_name %}">{{ m.title }}</a>
+                {% endfor %}
+            </td>
+            <td class="border-double">
+                <div class="breadcrumbs">
+                    <a href="{% url 'index2_3_lab4' %}">Начало</a>
+                </div>
+                <div class="content-wrapper">
+                    <h1 class="page-title">Перелеты, поезда</h1>
+                    <table class="content-table bg-lightgray">
+                        <tr>
+                            <td class="border-solid bg-yellow">
+                                <img src="{% static 'conprogs/images/img_4.png' %}" alt="Фото" width="300">
+                                <img src="{% static 'conprogs/images/img_5.png' %}" alt="Фото" width="300">
+                            </td>
+                            <td class="border-dotted bg-lightblue">
+                                <p style="font-size: 18px; color: #8b4513; text-align: justify;">
+                                    <b>Родственники.</b> Я посетил немало городов внутри России. Моих родственников раскидало по необъятной. Я
+                                    посещал их в Саратове, Самаре, Пензе, Санкт-Петербурге. И это только часть моих родственников. Каждый город
+                                    уникален, не только своим внешним видом, но и людьми. Любой город, каким бы он ни был, запомнился мне чем-то
+                                    определенным. Одна река Волга чего стоит.
+                                </p>
+                                <p style="font-size: 20px; color: #2e8b57; text-align: left;">
+                                    <i>Работа.</i> Я был в командировках в городах Владимир, Новосибирск и Омск. Как говорил ранее, каждый город
+                                    имеет свои особенности. Владимир, хоть и достаточно тихий город, но его красота, постройки, парки, церкви,
+                                    история, все это отличает его от остальных. Омск достаточно большой город, как Красноярск или Новосибирск.
+                                    Город живет хоккеем. Сибиряки все одинаковы.
+                                </p>
+                                <p class="border-groove bg-palegreen" style="font-size: 16px; color: #191970; text-align: right;">
+                                    <b>Жара.</b> Турция, Тайланд, многие россияне любят данные направления для отдыха. Я со своей семьей не раз
+                                    был в этих двух странах. Свои культуры, свои люди, свои обычаи и достопримечательности. Море. Каждый город или
+                                    остров в этих двух странах отличается от предыдущего. Свои правила и свой менталитет. Сама атмосфера этих
+                                    стран тебя расслабляет.
+                                </p>
+                                <p class="border-ridge bg-lightcoral" style="padding: 10px; font-size: 22px; color: #2e8b57; text-align: center;">
+                                    <b>Сочи.</b> Одно из любимых моих мест. В этом городе я посетил первый свой большой футбольный матч, кубок
+                                    конфедераций. Отличная атмосфера, хороший футбол, прекрасная программа до и после матч, невероятная погода.
+                                    Черное море поистине прекрасно. Вечерние прогулки на катере или пешком, на электросамокате или мотоцикле.
+                                    Сочи заметно отличается от других русских городов.
+                                </p>
+                                <p class="border-dashed bg-beige" style="text-align: justify; font-size: 18px; color: #800000; padding: 15px;">
+                                    <i>Казань.</i> Прекрасный город, иная культура. Красота города не сравнима ни с чем. Также я посетил в этом
+                                    городе свой первый в жизни матч чемпионата мира по футболу. Десятки тысяч людей, стадион гудит, город не спит.
+                                    Один из лучших городов, что я посещал.
+                                </p>
+                                <p style="font-size: 1.2em; color: navy;">
+                                    Конец? Наконец, переезд в Москву. Город, о котором можно говорить бесконечно. Красота сочетается с серостью
+                                    всех российских городов, количество людей соизмеримо стране, как и возможности. До переезда я посещал Москву
+                                    туристом, но быть полноценным жителем и туристом далеко разные вещи.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        Подвал (внешние ссылки: <a href="https://mgupp.ru">РОСБИОТЕХ</a> <a>Группа 21-ИУ-3, Институт промышленной инженерии, информационных технологий и мехатроники</a>)
+        <p>Автор: Лысенков Филипп</p>
+    </div>
+</div>
+
+</body>
+</html>

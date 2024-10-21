@@ -1,0 +1,52 @@
+from django.urls import path, register_converter
+from . import views
+from . import converters
+
+register_converter(converters.FourDigityearConverter, "year4")
+
+urlpatterns = [
+    path('', views.frames, name='frames'),
+    path('frames_2/', views.frames2, name='frames2'),
+    path('frames_3/', views.frames3, name='frames3'),
+    path('index/', views.index, name='home'),
+    path('fam/', views.family, name='fam'),
+    path('sport/', views.sport, name='sport'),
+    path('cybersport/', views.cybersport, name='cs'),
+    path('plains/', views.plains, name='plains'),
+    path('fam2/', views.family2, name='fam2'),
+    path('sport2/', views.sport2, name='sport2'),
+    path('cybersport2/', views.cybersport2, name='cs2'),
+    path('plains2/', views.plains2, name='plains2'),
+    path('index2/', views.index2, name='home2'),
+    path('fam3/', views.family3, name='fam3'),
+    path('sport3/', views.sport3, name='sport3'),
+    path('cybersport3/', views.cybersport3, name='cs3'),
+    path('plains3/', views.plains3, name='plains3'),
+    path('nav/', views.nav, name='nav'),
+    path('nav2/', views.nav2, name='nav2'),
+    path('nav3/', views.nav3, name='nav3'),
+    path('footer/', views.footer, name='footer'),
+    path('index3/', views.index3, name='home3'),
+    path('header/', views.header, name='head'),
+    path('lab4/zadanie1/index/', views.lab4_1_index, name='index1_lab4'),
+    path('lab4/zadanie1/fam/', views.lab4_1_fam, name='fam1_lab4'),
+    path('lab4/zadanie1/sport/', views.lab4_1_sport, name='sport1_lab4'),
+    path('lab4/zadanie1/cybersport/', views.lab4_1_cybersport, name='cybersport1_lab4'),
+    path('lab4/zadanie1/plains/', views.lab4_1_plains, name='plains1_lab4'),
+    path('lab4/zadanie2/index/', views.lab4_2_index, name='index2_lab4'),
+    path('lab4/zadanie2/fam/', views.lab4_2_fam, name='fam2_lab4'),
+    path('lab4/zadanie2/sport/', views.lab4_2_sport, name='sport2_lab4'),
+    path('lab4/zadanie2/cybersport/', views.lab4_2_cybersport, name='cybersport2_lab4'),
+    path('lab4/zadanie2/plains/', views.lab4_2_plains, name='plains2_lab4'),
+    path('lab4/zadanie2/2.2/index/', views.lab4_2_2_index, name='index2_2_lab4'),
+    path('lab4/zadanie2/2.2/fam/', views.lab4_2_2_fam, name='fam2_2_lab4'),
+    path('lab4/zadanie2/2.2/sport/', views.lab4_2_2_sport, name='sport2_2_lab4'),
+    path('lab4/zadanie2/2.2/cybersport/', views.lab4_2_2_cybersport, name='cybersport2_2_lab4'),
+    path('lab4/zadanie2/2.2/plains/', views.lab4_2_2_plains, name='plains2_2_lab4'),
+    path('lab4/zadanie3/index/', views.lab4_2_3_index, name='index2_3_lab4'),
+    path('lab4/zadanie3/fam/', views.lab4_2_3_fam, name='fam2_3_lab4'),
+    path('lab4/zadanie3/sport/', views.lab4_2_3_sport, name='sport2_3_lab4'),
+    path('lab4/zadanie3/cybersport/', views.lab4_2_3_cybersport, name='cybersport2_3_lab4'),
+    path('lab4/zadanie3/plains/', views.lab4_2_3_plains, name='plains2_3_lab4'),
+
+]

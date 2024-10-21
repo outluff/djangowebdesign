@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        table {
+            width: 100%;
+            height: 100vh;
+            border-collapse: collapse;
+        }
+
+        td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 15px;
+        }
+
+        .border-type-1 {
+            border: 2px solid black;
+        }
+
+        .border-type-2 {
+            border: 2px dashed #4682b4;
+        }
+
+        .border-type-3 {
+            border: 3px double red;
+        }
+
+        .border-thick-1 {
+            border-width: 1px;
+        }
+
+        .border-thick-2 {
+            border-width: 2px;
+        }
+
+        .border-thick-3 {
+            border-width: 3px;
+        }
+
+        .border-color-1 {
+            border-color: #000000;
+        }
+
+        .border-color-2 {
+            border-color: #FF5733;
+        }
+
+        .border-color-3 {
+            border-color: #33FF57;
+        }
+
+        .bg-color-2 {
+            background-color: #FFD700;
+        }
+
+        .bg-color-3 {
+            background-color: #90EE90;
+        }
+
+        .bg-color-4 {
+            background-color: #87CEFA;
+        }
+
+        .nav {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>Общие сведения</h1>
+
+<table>
+    <tr class="nav">
+        <td class="border-type-1 border-thick-2 border-color-1 bg-color-2"><a href="{% url 'index1_lab4' %}">MAIN</a>
+        </td>
+        {% for m in menu_4_lab %}
+        <td class="border-type-2 border-thick-1 border-color-2 bg-color-3">
+            <a href="{% url m.url_name %}">{{ m.title }}</a>
+        </td>
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <td colspan="{{ menu_4_lab|length|add:'1' }}" class="border-type-3 border-thick-3 border-color-3 bg-color-4">
+            <img src="{% static 'conprogs/images/img.png' %}" alt="Фото" width="300">
+            <p style="font-size: 18px; color: #8b4513; text-align: justify; font-family: 'Verdana', sans-serif;">
+                <b>Меня зовут Лысенков Филипп Сергеевич.</b> Место рождения: город Красноярск, Красноярский край. Время
+                рождения:
+                08:47 по местному времени (+4 от московского времени). <u>Дата рождения: двадцать второе апреля две
+                тысячи третьего
+                года.</u> Знак зодиака: телец. Воспитывался в полной семье. Разница в возрасте с родителями 30 лет. В
+                детстве у меня
+                был электрический квадроцикл.
+            </p>
+
+            <p style="margin-left: 25px; font-size: 20px; color: #4682b4; font-family: 'Times New Roman', serif; text-align: left;">
+                <i>Первое место жительства:</i> квартира по улице Софьи Ковалевской. Второе место жительства: квартира в
+                центре
+                города напротив Красной Площади. На второй квартире я получил свой первый ожог — дотронулся до горячего
+                утюга. <b>Третье
+                и крайнее в городе Красноярск мое место жительства:</b> квартира по адресу Новая Заря 25. В детском саду
+                начал
+                заниматься тхэквондо. Впоследствии получил приглашение в школу олимпийского резерва.
+            </p>
+
+            <p style="background-color: #f5f5f5; font-size: 16px; color: #191970; font-family: 'Courier New', monospace; margin-right: 30px; text-align: right;">
+                <b>Школа.</b> Первого сентября две тысячи десятого года я пошел в первый класс в школу «Гимназия №3». В
+                это же время
+                посетил свою первую тренировку по футболу. Первый класс окончил с одной тройкой. Школа с углубленным
+                изучением
+                английского, французского и немецкого языков. Со второго класса почувствовал тягу к знаниям языков.
+                Между
+                французским и немецким выбрал французский.
+            </p>
+
+            <p style="background-color: #dcdcdc; padding: 10px; font-size: 22px; color: #2e8b57; font-family: 'Arial'; text-align: center;">
+                В 8 классе перешел в новую школу: «Гимназия №1 Универс». Там получил среднее образование. Выступал за
+                школьные
+                команды по футболу. Ничего стоящего не выиграл. Параллельно занимался футболом в местной академии.
+                Соревновались в
+                разных городах, с разными по уровню соперниками. Многократный чемпион Красноярского края по футболу и
+                мини-футболу.
+                Призер чемпионатов Сибири и других больших турниров.
+            </p>
+
+            <p style="text-align: justify; font-size: 18px; color: #800000; font-family: 'Verdana'; background-color: #f0e68c; padding: 15px;">
+                <i>Всегда интересовался музыкой.</i> Читаю книги в основном британских авторов. <b>Не женат, хотя
+                склоняют.</b> Нет
+                детей, рано. Есть работа. Не привлекался к административной или уголовной ответственности. Нет клички
+                или погоняла.
+                Прохожу периодические медицинские обследования. Люблю кошек и котов. <u>Нет четкого вероисповедания.</u>
+                Жизнь —
+                лучший драматург.
+            </p>
+        </td>
+    </tr>
+</table>
+
+<footer>
+    <p>&copy; 2024 Лысенков Филипп</p>
+</footer>
+
+</body>
+</html>
