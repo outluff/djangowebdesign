@@ -256,27 +256,27 @@ def lab4_2_plains(request):
 
 def lab4_2_2_index(request):
     data = {'title': "Общие сведения", 'menu_4_lab2_2': menu_4_lab2_2}
-    return render(request, 'lab4/index_3_2.html', context=data)
+    return render(request, 'lab4/index_5_1.html', context=data)
 
 
 def lab4_2_2_fam(request):
     data = {'title': "Семья", 'menu_4_lab2_2': menu_4_lab2_2}
-    return render(request, 'lab4/fam_3_2.html', context=data)
+    return render(request, 'lab4/fam_5_1.html', context=data)
 
 
 def lab4_2_2_sport(request):
     data = {'title': "Спорт", 'menu_4_lab2_2': menu_4_lab2_2}
-    return render(request, 'lab4/sport_3_2.html', context=data)
+    return render(request, 'lab4/sport_5_1.html', context=data)
 
 
 def lab4_2_2_cybersport(request):
     data = {'title': "Киберспорт", 'menu_4_lab2_2': menu_4_lab2_2}
-    return render(request, 'lab4/cybersport_3_2.html', context=data)
+    return render(request, 'lab4/cybersport_5_1.html', context=data)
 
 
 def lab4_2_2_plains(request):
     data = {'title': "Перелеты, поезда", 'menu_4_lab2_2': menu_4_lab2_2}
-    return render(request, 'lab4/plains_3_2.html', context=data)
+    return render(request, 'lab4/plains_5_1.html', context=data)
 
 
 def lab4_2_3_index(request):
@@ -302,3 +302,28 @@ def lab4_2_3_cybersport(request):
 def lab4_2_3_plains(request):
     data = {'title': "Перелеты, поезда", 'menu_4_lab3': menu_4_lab3}
     return render(request, 'lab4/plains_3_3.html', context=data)
+
+
+def lab5_1_index(request):
+    data = {'title': "Общие сведения"}
+    return render(request, 'lab5/index_5_1.html')
+
+
+def lab5_1_fam(request):
+    data = {'title': "Семья"}
+    return render(request, 'lab5/fam_5_1.html')
+
+
+def lab5_1_sport(request):
+    data = {'title': "Спорт"}
+    return render(request, 'lab5/sport_5_1.html')
+
+
+def lab5_1_cybersport(request):
+    data = {'title': "Киберспорт"}
+    return render(request, 'lab5/cybersport_5_1.html')
+
+
+def lab5_1_plains(request):
+    data = {'title': "Перелеты, поезда"}
+    return render(request, 'lab5/plains_5_1.html')
