@@ -53,5 +53,10 @@ urlpatterns = [
     path('lab5/zadanie1/sport/', views.lab5_1_sport, name='sport_1_lab5'),
     path('lab5/zadanie1/cybersport/', views.lab5_1_cybersport, name='cybersport_1_lab5'),
     path('lab5/zadanie1/plains/', views.lab5_1_plains, name='plains_1_lab5'),
+    path('lab5/zadanie2/index/', views.lab5_2_index, name='index_2_lab5'),
+    path('lab5/zadanie2/fam/', views.lab5_2_fam, name='fam_2_lab5'),
+    path('lab5/zadanie2/sport/', views.lab5_2_sport, name='sport_2_lab5'),
+    path('lab5/zadanie2/cybersport/', views.lab5_2_cybersport, name='cybersport_2_lab5'),
+    path('lab5/zadanie2/plains/', views.lab5_2_plains, name='plains_2_lab5'),
 
 ]
