@@ -366,3 +366,33 @@ def lab5_2_cybersport(request):
 def lab5_2_plains(request):
     data = {'title': "Перелеты, поезда", 'menu': menu_lab5_2}
     return render(request, 'lab5/plains_5_2.html', context=data)
+
+menu_lab5_3 = [{'title': 'Family', 'url_name': 'fam_1_lab5'},
+               {'title': 'Sport', 'url_name': 'sport_1_lab5'},
+               {'title': 'Cybersport', 'url_name': 'cybersport_1_lab5'},
+               {'title': 'Plains', 'url_name': 'plains_1_lab5'},
+               {'title': 'Общие сведения задание 2', 'url_name': 'index_2_lab5'},
+               ]
+def lab5_3_index(request):
+    data = {'title': "Общие сведения", 'menu': menu_lab5_3}
+    return render(request, 'lab5/index_5_3.html', context=data)
+
+
+def lab5_3_fam(request):
+    data = {'title': "Семья", 'menu': menu_lab5_3}
+    return render(request, 'lab5/fam_5_3.html', context=data)
+
+
+def lab5_3_sport(request):
+    data = {'title': "Спорт", 'menu': menu_lab5_3}
+    return render(request, 'lab5/sport_5_3.html', context=data)
+
+
+def lab5_3_cybersport(request):
+    data = {'title': "Киберспорт", 'menu': menu_lab5_3}
+    return render(request, 'lab5/cybersport_5_3.html', context=data)
+
+
+def lab5_3_plains(request):
+    data = {'title': "Перелеты, поезда", 'menu': menu_lab5_3}
+    return render(request, 'lab5/plains_5_3.html', context=data)
