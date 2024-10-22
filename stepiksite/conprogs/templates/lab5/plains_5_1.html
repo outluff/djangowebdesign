@@ -1,210 +1,212 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Перелеты, поезда</title>
+    <title>Общие сведения</title>
     <style>
         body {
             font-family: 'Verdana', sans-serif;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
-            background-color: #4682b4;
-            color: white;
+            background-color: #ffd700;
+            color: black;
             height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
             font-weight: bold;
+            flex-shrink: 0;
+            border: 2px dashed #8b0000;
         }
 
-        .page-title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 40px;
-        }
-
-        table {
-            width: 100%;
-            height: 100vh;
-            border-collapse: collapse;
-        }
-
-        td {
-            text-align: center;
-            vertical-align: middle;
-            padding: 15px;
+        .container {
+            display: flex;
+            flex-grow: 1;
+            border: 2px solid #00008b;
         }
 
         .nav {
-            width: 200px;
-            background-color: #f0f0f0;
+            background-color: #f0e68c;
             padding: 10px;
-            border-right: 3px solid #4682b4;
+            box-sizing: border-box;
+            width: 200px;
+            flex-shrink: 0;
+            border-right: 3px solid #228b22;
         }
 
         .nav a {
             display: block;
             padding: 10px;
+            margin-bottom: 10px;
             text-decoration: none;
-            color: #333;
-            border: 2px solid transparent;
+            color: black;
+            background-color: #e0ffff;
+            border: 1px solid #800080;
         }
 
         .nav a:hover {
             background-color: #dcdcdc;
         }
 
-        .nav a.active {
-            background-color: #FFB6C1;
-            border: 4px dotted #FF69B4;
-        }
-
-        .content-table {
-            width: 100%;
-            height: auto;
-            border: 5px solid #191970;
-            background-color: yellow;
-        }
-
-        .content-table .image-col {
-            width: 30%;
-            background-color: #e0f7fa;
-            border: 6px dashed #00796b;
-            padding: 10px;
-        }
-
-        .content-table .text-col {
-            width: 70%;
-            background-color: #fff9c4;
-            border: 3px solid #fbc02d;
-            padding: 10px;
-            text-align: justify;
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5dc;
+            padding: 20px;
         }
 
         .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            border: 3px groove #2f4f4f;
+            background-color: #fff8dc;
+        }
+
+        .title {
+            background-color: #f0e68c;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+            border-bottom: 2px solid #a52a2a;
+            flex-shrink: 0;
+        }
+
+        .content-table {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .image-col, .text-col {
+            flex: 1;
             padding: 20px;
+        }
+
+        .image-col {
+            background-color: #ffeb3b;
+            text-align: center;
+            border: 3px solid #000080;
+        }
+
+        .text-col {
+            background-color: #e6e6fa;
+            border: 1px dotted #2e8b57;
+        }
+
+        .text-col p {
+            font-size: 18px;
+            color: #8b4513;
+            text-align: justify;
         }
 
         footer {
             text-align: center;
-            background-color: #2c3e50;
-            color: white;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            padding: 10px;
+            background-color: #ddd;
+            flex-shrink: 0;
         }
-
-        .border-medium-dotted {
-            border: 4px dotted #FF4500;
-        }
-
-        .border-double {
-            border: 8px double #FF1493;
-        }
-
-        .border-thick-solid {
-            border: 10px solid #191970;
-        }
-
-        .bg-color-lightgreen {
-            background-color: #98FB98;
-        }
-
-        .bg-color-lightblue {
-            background-color: #ADD8E6;
-        }
-
     </style>
 </head>
 <body>
+
 <div class="header">
-    Название сайта: MY LIFE
-    Автор: Лысенков Филипп Сергеевич
+    Название сайта: MY LIFE | Автор: Лысенков Филипп Сергеевич
 </div>
 
-<table>
-    <tr>
-        <td class="nav">
-            <a href="#">Общие сведения</a>
-            <a href="#" class="active">Текущая страница</a>
-        </td>
-        <td class="border-double bg-color-lightblue">
-            <div class="content-wrapper">
-                <h1 class="page-title">Перелеты, поезда</h1>
-                <table class="content-table">
-                    <tr>
-                        <td class="image-col border-thick-solid">
-                            <img src="images/img_4.png" alt="Фото" width="300">
-                            <img src="images/img_5.png" alt="Фото" style="width:300px;height:auto;">
-                        </td>
-                        <td class="text-col border-medium-dotted bg-color-lightgreen">
-                            <p style="font-family: Arial; font-size: 1.6em; color: darkblue;">
-                                <strong><em>Родственники.</em></strong> <u>Я посетил немало городов</u> внутри России.
-                                Моих родственников раскидало по необъятной. Я посещал их в Саратове, Самаре, Пензе,
-                                Санкт-Петербурге. И это только часть моих родственников. Каждый город уникален, не
-                                только своим внешним видом, но и людьми. Любой город, каким бы он ни был, запомнился мне
-                                чем-то определенным. Одна река Волга чего стоит.
-                            </p>
+<div class="container">
 
-                            <p style="font-family: Courier New; font-size: 2.5em; color: green; text-align: center;">
-                                <strong>Работа.</strong> Я был в командировках в городах Владимир, Новосибирск и Омск.
-                                Как говорил ранее, каждый город имеет свои особенности. Владимир, хоть и достаточно
-                                тихий город, но его красота, постройки, парки, церкви, история, все это отличает его от
-                                остальных. Омск достаточно большой город, как Красноярск или Новосибирск. Город живет
-                                хоккеем. Сибиряки все одинаковы.
-                            </p>
+    <div class="nav">
+        <a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
 
-                            <p style="font-family: Times New Roman; font-size: 1em; color: purple; text-indent: 20px;">
-                                <u><em>Жара.</em></u> Турция, Тайланд, многие россияне любят данные направления для
-                                отдыха. Я со своей семьей не раз был в этих двух странах. Свои культуры, свои люди, свои
-                                обычаи и достопримечательности. Море. Каждый город или остров в этих двух странах
-                                отличается от предыдущего. Свои правила и свой менталитет. Сама атмосфера этих стран
-                                тебя расслабляет.
-                            </p>
-
-                            <p style="font-family: Arial; font-size: 1.2em; color: navy; text-align: right;">
-                                <strong>Сочи.</strong> Одно из любимых моих мест. В этом городе я посетил первый свой
-                                большой футбольный матч, кубок конфедераций. Отличная атмосфера, хороший футбол,
-                                прекрасная программа до и после матч, невероятная погода. Черное море поистине
-                                прекрасно. Вечерние прогулки на катере или пешком, на электросамокате или мотоцикле.
-                                Сочи заметно отличается от других русских городов.
-                            </p>
-
-                            <p style="font-family: Courier New; font-size: 1.5em; color: darkorange; text-align: justify;">
-                                <u>Казань.</u> Прекрасный город, иная культура. Красота города не сравнима ни с чем.
-                                Также я посетил в этом городе свой первый в жизни матч чемпионата мира по футболу.
-                                Десятки тысяч людей, стадион гудит, город не спит. Один из лучших городов, что я
-                                посещал.
-                            </p>
-
-                            <p style="font-family: Times New Roman; font-size: 1.4em; color: teal;">
-                                Конец? Наконец, переезд в Москву. Город, о котором можно говорить бесконечно. Красота
-                                сочетается с серостью всех российских городов, количество людей соизмеримо стране, как и
-                                возможности. До переезда я посещал Москву туристом, но быть полноценным жителем и
-                                туристом далеко разные вещи.
-                            </p>
-
-                            <p style="font-family: 'Times New Roman'; font-size: 1.2em; color: blue; text-indent: 20px;">
-                                <s>Недавно.</s> Всегда хотел побывать в Калининграде. Город очень сильно выделяется на
-                                фоне остальных российских городов. Во-первых, своей инфраструктурой. Во-вторых,
-                                историей. Балтийское море. В реальности, в отличие от фото, невозможно оторвать глаз.
-                                Красивый город и хорошие люди.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+    <div class="content">
+        <div class="content-wrapper">
+            <div class="title">
+                Спорт
             </div>
-        </td>
-    </tr>
-</table>
+            <div class="content-table">
+                <div class="image-col">
+                    <img src="{% static 'conprogs/images/img_4.png' %}" alt="Фото" width="300">
+                    <img src="{% static 'conprogs/images/img_5.png' %}" alt="Фото" style="width:300px;height:auto;">
+                </div>
+                <div class="text-col">
+                    <p style="font-family: Arial; font-size: 1.6em; color: darkblue; text-align: justify;">
+                        <strong><em>Родственники.</em></strong> <u>Я посетил немало городов</u> внутри России. Моих
+                        родственников раскидало по необъятной. Я посещал их в Саратове, Самаре, Пензе, Санкт-Петербурге.
+                        И это только
+                        часть моих родственников. Каждый город уникален, не только своим внешним видом, но и людьми.
+                        Любой город,
+                        каким бы он ни был, запомнился мне чем-то определенным. Одна река Волга чего стоит.
+                    </p>
+
+                    <p style="font-family: Courier New; font-size: 2.5em; color: green; text-align: center;">
+                        <strong>Работа.</strong> Я был в командировках в городах Владимир, Новосибирск и Омск. Как
+                        говорил ранее, каждый город имеет свои особенности. Владимир, хоть и достаточно тихий город, но
+                        его красота,
+                        постройки, парки, церкви, история, все это отличает его от остальных. Омск достаточно большой
+                        город, как
+                        Красноярск или Новосибирск. Город живет хоккеем. Сибиряки все одинаковы.
+                    </p>
+
+                    <p style="font-family: Times New Roman; font-size: 1em; color: purple; text-align: left; text-indent: 20px;">
+                        <u><em>Жара.</em></u> Турция, Тайланд, многие россияне любят данные направления для отдыха. Я со
+                        своей семьей не раз был в этих двух странах. Свои культуры, свои люди, свои обычаи и
+                        достопримечательности.
+                        Море. Каждый город или остров в этих двух странах отличается от предыдущего. Свои правила и свой
+                        менталитет. Сама
+                        атмосфера этих стран тебя расслабляет.
+                    </p>
+
+                    <p style="font-family: Arial; font-size: 1.2em; color: navy; text-align: right;">
+                        <strong>Сочи.</strong> Одно из любимых моих мест. В этом городе я посетил первый свой большой
+                        футбольный матч, кубок конфедераций. Отличная атмосфера, хороший футбол, прекрасная программа до
+                        и после матч,
+                        невероятная погода. Черное море поистине прекрасно. Вечерние прогулки на катере или пешком, на
+                        электросамокате или мотоцикле. Сочи заметно отличается от других русских городов.
+                    </p>
+
+                    <p style="font-family: Courier New; font-size: 1.5em; color: darkorange; text-align: justify;">
+                        <u>Казань.</u> Прекрасный город, иная культура. Красота города не сравнима ни с чем. Также я
+                        посетил в этом городе свой первый в жизни матч чемпионата мира по футболу. Десятки тысяч людей,
+                        стадион гудит,
+                        город не спит. Один из лучших городов, что я посещал.
+                    </p>
+
+                    <p style="font-family: Times New Roman; font-size: 1.4em; color: teal; text-align: left;">
+                        Конец? Наконец, переезд в Москву. Город, о котором можно говорить бесконечно. Красота сочетается
+                        с серостью всех российских городов, количество людей соизмеримо стране, как и возможности. До
+                        переезда я посещал
+                        Москву туристом, но быть полноценным жителем и туристом далеко разные вещи.
+                    </p>
+
+                    <p style="font-family: 'Times New Roman'; font-size: 1.2em; color: blue; text-indent: 20px;">
+                        <s>Недавно.</s> Всегда хотел побывать в Калининграде. Город очень сильно выделяется на фоне
+                        остальных российских городов. Во-первых, своей инфраструктурой. Во-вторых, историей. Балтийское
+                        море. В реальности, в отличие от фото,
+                        невозможно оторвать глаз. Красивый город и хорошие люди.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <footer>
     <p>&copy; 2024 Лысенков Филипп</p>
