@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структура сайта</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Verdana', sans-serif;
+        }
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "left-menu top-menu right-menu"
+                "left-menu content-right content-right"
+                "left-menu bottom-menu right-menu"
+                "footer footer footer";
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: auto;
+            gap: 10px;
+        }
+        .header {
+            grid-area: header;
+            background-color: #f2f2f2;
+            border: 2px solid red;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header .logo {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header .info {
+            background-color: yellow;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+        .header .info div {
+            margin: 0 10px;
+        }
+        .menu-left, .menu-right, .menu-bottom {
+            background-color: #ffcccc;
+            border: 2px solid red;
+        }
+        .menu-left {
+            grid-area: left-menu;
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-left div {
+            margin: 10px;
+            background-color: lightgreen;
+            padding: 10px;
+            border: 2px solid red;
+        }
+        .menu-right {
+            grid-area: right-menu;
+            background-color: lightyellow;
+            padding: 10px;
+            border: 2px solid red;
+        }
+        .menu-bottom {
+            grid-area: bottom-menu;
+            background-color: lightblue;
+            padding: 10px;
+            border: 2px solid red;
+        }
+        .top-menu {
+            grid-area: top-menu;
+            background-color: #f2f2f2;
+            border: 2px solid red;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .content-right {
+            grid-area: content-right;
+            display: flex;
+            flex-direction: column;
+        }
+        .banner {
+            background-color: lightblue;
+            padding: 20px;
+            border: 2px solid red;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .content {
+            background-color: lightyellow;
+            padding: 10px;
+            border: 2px solid red;
+            margin-bottom: 10px;
+        }
+        .footer {
+            grid-area: footer;
+            background-color: #f2f2f2;
+            border: 2px solid red;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo">Лого</div>
+        <div class="info">
+            <div>Контактная информация: +7 (123) 456-78-90</div>
+            <div>Авторизация</div>
+        </div>
+    </div>
+
+    <div class="top-menu">
+        <div>Главная</div>
+        <div>О нас</div>
+        <div>Контакты</div>
+        <div>Услуги</div>
+    </div>
+
+    <div class="menu-left">
+        <div>Меню каталог</div>
+        <div>Опрос: Как вам наш сайт?</div>
+        <div>Информер: Новости компании</div>
+    </div>
+
+    <div class="content-right">
+        <div class="banner">Баннер</div>
+        <div class="content">
+            <h2>Заголовок статьи</h2>
+            <p>Это пример текста для основного блока контента. Здесь может быть любой текст, который нужно разместить на сайте. Можно написать статью или новости компании.</p>
+        </div>
+        <div class="content">
+            <h2>Дополнительный текст</h2>
+            <p>Это ещё один блок текста для демонстрации возможности добавления нескольких блоков контента на страницу.</p>
+        </div>
+    </div>
+
+    <div class="menu-right">
+        <div>Текстовый блок справа</div>
+        <div>Информер: Курсы валют</div>
+    </div>
+
+    <div class="menu-bottom">
+        Нижнее меню: Политика конфиденциальности
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Все права защищены</p>
+        <p>Контактная информация: email@example.com</p>
+    </div>
+</div>
+
+</body>
+</html>
