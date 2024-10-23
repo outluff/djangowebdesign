@@ -4,261 +4,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Семья</title>
+    <title>Структура сайта</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Verdana', sans-serif;
             margin: 0;
             padding: 0;
-            max-width: 1000px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        .header {
-            background-color: #87ceeb;
-            color: black;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            border: 3px double red;
-        }
-
-        .header-title {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .header-author {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-right: 20px;
-        }
-
-        .divider {
-            border-left: 3px dotted green;
-            height: 50px;
-            margin: 0 10px;
-        }
-
-        .breadcrumbs {
-            padding: 10px;
-            font-size: 14px;
-            background-color: #f0e68c;
-            border: 2px solid #f5deb3;
-            margin: 10px 0;
-            width: calc(100% - 220px);
-            margin-left: 200px;
+            font-family: 'Verdana', sans-serif;
         }
 
         .container {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "menu-top menu-top menu-top"
+                "left-menu content right-menu"
+                "left-menu content right-menu"
+                "menu-bottom menu-bottom menu-bottom"
+                "footer footer footer";
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: auto;
+            gap: 10px;
+        }
+
+        .header {
+            grid-area: header;
             display: flex;
+            justify-content: space-between;
+            background-color: #f2f2f2;
+            border: 2px solid red;
+            padding: 10px;
+        }
+
+        .header .logo {
+            width: 150px;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header .site-name {
             flex-grow: 1;
-            border: 4px groove purple;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightyellow;
         }
 
-        .nav {
-            background-color: #fa8072;
+        .header .auth {
+            width: 150px;
+            background-color: lightgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-top, .menu-bottom {
+            background-color: lightcoral;
+            border: 2px solid red;
             padding: 10px;
-            box-sizing: border-box;
-            width: 200px;
-            flex-shrink: 0;
-            border-right: 3px solid navy;
-            height: calc(100vh - 100px);
+            text-align: center;
+            grid-column: span 3;
         }
 
-        .nav a {
-            display: block;
+        .left-menu, .right-menu {
             padding: 10px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: black;
-            background-color: #ffe4e1;
-            border: 2px dashed orange;
+            border: 2px solid red;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .nav a:hover {
-            background-color: #ffcccb;
+        .left-menu {
+            grid-area: left-menu;
+            background-color: lightpink;
+        }
+
+        .right-menu {
+            grid-area: right-menu;
+            background-color: lightyellow;
+        }
+
+        .menu-item, .info-item {
+            padding: 10px;
+            border: 1px solid red;
+            background-color: white;
         }
 
         .content {
-            flex-grow: 1;
+            grid-area: content;
+            background-color: lightblue;
+            padding: 10px;
+            border: 2px solid red;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+        }
+
+        .banner {
+            margin-bottom: 10px;
+            background-color: lightyellow;
+            border: 2px solid red;
+            max-height: 250px;
+        }
+
+        .content-text {
+            margin-bottom: 10px;
+            background-color: lightyellow;
+            padding: 20px;
+            border: 2px solid red;
+        }
+
+        .content-photo-container {
+            display: flex;
             align-items: center;
-            background-color: #e6e6fa;
+            margin-bottom: 5px;
+        }
+
+        .content-photo {
+            background-color: lightyellow;
+            border: 2px solid red;
             padding: 20px;
+            max-width: 300px;
+            margin-right: 10px; /* Отступ между фото и текстом */
         }
 
-        .content-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
+        .content-photo img {
+            max-width: 100%;
         }
 
-        .title {
-            background-color: #ffb6c1;
-            padding: 10px;
-            text-align: center;
-            font-size: 24px;
-            border-bottom: 3px solid #8a2be2;
-            flex-shrink: 0;
-        }
-
-        .content-table {
-            display: flex;
-            flex-grow: 1;
-        }
-
-        .image-col, .text-col {
-            flex: 1;
+        .content-photo-text {
+            background-color: lightyellow;
+            border: 2px solid red;
             padding: 20px;
-            border: 1px solid #ff4500;
+            flex-grow: 1; /* Занимает оставшееся пространство */
         }
 
-        .image-col {
-            background-color: #ffe4b5;
-            text-align: center;
-        }
-
-        .text-col {
-            background-color: #add8e6;
-        }
-
-        .text-col p {
-            font-size: 18px;
-            color: #4b0082;
-            text-align: justify;
-        }
-
-        .highlight {
-            font-size: 20px;
-            color: #2e8b57;
-            margin-left: 25px;
-        }
-
-        footer {
-            text-align: center;
+        .footer {
+            grid-area: footer;
+            background-color: #f2f2f2;
             padding: 10px;
-            background-color: #f5f5f5;
-            flex-shrink: 0;
-            border-top: 3px solid #8b0000;
-        }
-
-        .footer-info {
-            font-size: 14px;
-            color: #000;
-            margin-top: 10px;
+            border: 2px solid red;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <img src="{% static 'conprogs/images/logo.png' %}" alt="Логотип" width="80">
-    <div class="header-title">
-        <h1>MY LIFE</h1>
-    </div>
-    <div class="divider"></div>
-    <div class="header-author">
-        <p>Автор: Лысенков Филипп Сергеевич</p>
-    </div>
-</div>
-
-<div class="breadcrumbs">
-    <a href="{% url 'index_2_lab5' %}">Начало</a> / Семья
-</div>
-
 <div class="container">
+    <div class="header">
+        <div class="logo"><img src="{% static 'conprogs/images/logo.png' %}" alt="Логотип" width="80"></div>
+        <div class="site-name"><b>MY LIFE</b></div>
+        <div class="auth">Авторизация</div>
+    </div>
 
-    <div class="nav">
-        <a href="{% url 'index_2_lab5' %}">Общие сведения</a>
+    <div class="menu-top">
+        <a href="{% url 'index_3_lab5' %}">Общие сведения</a>
         {% for m in menu %}
         <a href="{% url m.url_name %}">{{ m.title }}</a>
         {% endfor %}
     </div>
 
+    <div class="left-menu">
+        <div class="menu-item">
+            {% for m in menu_cat %}
+            <div><a href="{% url m.url_name %}">{{ m.title }}</a></div>
+            {% endfor %}
+        </div>
+        <div class="menu-item"><h2>Опрос о спортсмене</h2>
+            <form>
+                <div class="question">
+                    <p>Считаете ли вы себя спортсменом?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="athlete" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="athlete" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Занимаетесь ли вы спортом регулярно?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="regular" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="regular" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Участвовали ли вы когда-либо в соревнованиях?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="competitions" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="competitions" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit">Отправить</button>
+                </div>
+            </form>
+        </div>
+        <div class="menu-item"><img src="{% static 'conprogs/images/img_13.png' %}" alt="Фото" width="500"></div>
+    </div>
+
     <div class="content">
-        <div class="content-wrapper">
-            <div class="title">
-                Семья
+        <div class="banner">
+            <img src="{% static 'conprogs/images/img_11.png' %}" alt="Баннер" style="width: 100%; height: 100%;">
+        </div>
+        <div class="content-photo-container">
+            <div class="content-photo">
+                <img src="{% static 'conprogs/images/img_1.png' %}" alt="Фото">
             </div>
-            <div class="content-table">
-                <div class="image-col">
-                    <img src="{% static 'conprogs/images/img_1.png' %}" alt="Фото" width="300">
-                </div>
-                <div class="text-col">
-                    <p>
-                        <i>Чем больше мы живем, тем больше мы хотим.</i> У меня есть две бабушки и дедушка.
-                        Бабушка с дедушкой живут в
-                        городе Ужур, Красноярский край. Пытаюсь бывать у них почаще. <u>Бабушка готовит вкусные
-                        пирожки и пельмени.</u>
-                        Дедушка хороший рыбак. Я их внук. Еще одна бабушка живет в Красноярске. Ее муж, мой дедушка, был
-                        деканом педагогического университета в городе Красноярск. Умер до моего рождения.
-                    </p>
-
-                    <p class="highlight">
-                        <b>Завтра не наступит, если не уснуть.</b> Этот абзац о моем отце. В возрасте 18 лет я
-                        потерял отца. <u>Человека лучше не найти.</u> Пройти путь от города с населением около
-                        пятидесяти тысяч до
-                        инженера в городе миллионике дорого стоит. Множество непоправимых и тяжелых ситуаций на его
-                        пути, не сломали его, и
-                        он оставался добр ко всем, закрывал свою семью спиной.
-                    </p>
-
-                    <p class="highlight"
-                       style="margin-right: 30px; text-align: right; font-size: 22px;">
-                        <i>Что для тебя красота?</i> Для меня это моя мама. Женщина невиданной красоты и сильного
-                        стержня.
-                        Она проделала огромный путь к тому, кем она сейчас является. В отношении меня мама всегда
-                        держала баланс между
-                        чувствами и здравым мышлением. Я думаю, что её труд окупится. <s>Она, как и все в моей семье,
-                        великий
-                        человек.</s> Трудности не сломали никого.
-                    </p>
-
-                    <p class="highlight" style="text-align: center; font-size: 18px;">
-                        <b>Не без греха.</b> Тихон — кот, который появился в последний год моего постоянного пребывания
-                        в
-                        городе Красноярск. Красивый. Полноценный член семьи. Как и все, до сих пор помнит и переживает
-                        потерю главы
-                        нашей семьи. <i>Учится разговаривать.</i> Защитник. Характер тяжелый. Любит вкусно поесть,
-                        поспать и
-                        поиграть в 5 утра. Любит маму и бабушку.
-                    </p>
-
-                    <p class="highlight"
-                       style="margin-left: 20px; margin-right: 20px; text-align: justify; font-size: 20px;">
-                        <i>Еда.</i> Все в моей семье вкусно готовят. Упоминал ранее бабушкины пирожки. Отец любил
-                        разного
-                        рода кухни. От паназиатской до итальянской. Все умел готовить. Навыки хорошего шеф-повара в нем
-                        очень сильно
-                        отражались. Бабушка по линии матери готовит вкусный домашний борщ и щи. Варит всегда на 20
-                        человек. Всю жизнь
-                        звал к себе друзей вкусно пообедать.
-                    </p>
-                </div>
+            <div class="content-photo-text">
+                <p><b>Описание фотографии:</b> Фотография Тихона</p>
             </div>
+        </div>
+        <div class="content-text">
+            <p>
+                <i>Чем больше мы живем, тем больше мы хотим.</i> У меня есть две бабушки и дедушка.
+                Бабушка с дедушкой живут в
+                городе Ужур, Красноярский край. Пытаюсь бывать у них почаще. <u>Бабушка готовит вкусные
+                пирожки и пельмени.</u>
+                Дедушка хороший рыбак. Я их внук. Еще одна бабушка живет в Красноярске. Ее муж, мой дедушка, был
+                деканом педагогического университета в городе Красноярск. Умер до моего рождения.
+            </p>
+
+            <p class="highlight">
+                <b>Завтра не наступит, если не уснуть.</b> Этот абзац о моем отце. В возрасте 18 лет я
+                потерял отца. <u>Человека лучше не найти.</u> Пройти путь от города с населением около
+                пятидесяти тысяч до
+                инженера в городе миллионике дорого стоит. Множество непоправимых и тяжелых ситуаций на его
+                пути, не сломали его, и
+                он оставался добр ко всем, закрывал свою семью спиной.
+            </p>
+
+            <p class="highlight"
+               style="margin-right: 30px; text-align: right; font-size: 22px;">
+                <i>Что для тебя красота?</i> Для меня это моя мама. Женщина невиданной красоты и сильного
+                стержня.
+                Она проделала огромный путь к тому, кем она сейчас является. В отношении меня мама всегда
+                держала баланс между
+                чувствами и здравым мышлением. Я думаю, что её труд окупится. <s>Она, как и все в моей семье,
+                великий
+                человек.</s> Трудности не сломали никого.
+            </p>
+
+            <p class="highlight" style="text-align: center; font-size: 18px;">
+                <b>Не без греха.</b> Тихон — кот, который появился в последний год моего постоянного пребывания
+                в
+                городе Красноярск. Красивый. Полноценный член семьи. Как и все, до сих пор помнит и переживает
+                потерю главы
+                нашей семьи. <i>Учится разговаривать.</i> Защитник. Характер тяжелый. Любит вкусно поесть,
+                поспать и
+                поиграть в 5 утра. Любит маму и бабушку.
+            </p>
+
+            <p class="highlight"
+               style="margin-left: 20px; margin-right: 20px; text-align: justify; font-size: 20px;">
+                <i>Еда.</i> Все в моей семье вкусно готовят. Упоминал ранее бабушкины пирожки. Отец любил
+                разного
+                рода кухни. От паназиатской до итальянской. Все умел готовить. Навыки хорошего шеф-повара в нем
+                очень сильно
+                отражались. Бабушка по линии матери готовит вкусный домашний борщ и щи. Варит всегда на 20
+                человек. Всю жизнь
+                звал к себе друзей вкусно пообедать.
+            </p>
         </div>
     </div>
 
-</div>
-
-<footer>
-    <p>&copy; 2024 Лысенков Филипп</p>
-    <div class="footer-info">
-        <p>Внешние ссылки:</p>
-        <p><a href="https://mgupp.ru">Ссылка на РОСБИОТЕХ</a></p>
+    <div class="right-menu">
+        <div class="info-item">Солнечный свет - он весит что-нибудь?
+            Ответ: <b>Да</b>.
+            Объяснение: Солнечный свет состоит из фотонов, несущихся от Солнца к Земле. Масса общего света, попадающего
+            на Землю, составляет 3,7 * 10 в 24-й степени кг. В солнечный день город Чикаго весит на 140 кг больше, чем в
+            пасмурный, - и всё из-за того, что на него падает столько света.
+        </div>
+        <div class="info-item"><img src="{% static 'conprogs/images/img_12.png' %}" alt="Фото" width="300"></div>
     </div>
-</footer>
+
+    <div class="menu-bottom"><a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Лысенков Филипп</p>
+        <div class="footer-info">
+            <p>Внешние ссылки:</p>
+            <p><a href="https://mgupp.ru">Ссылка на РОСБИОТЕХ</a></p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

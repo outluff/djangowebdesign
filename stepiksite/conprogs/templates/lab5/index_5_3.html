@@ -9,107 +9,146 @@
         * {
             box-sizing: border-box;
         }
+
         body {
             margin: 0;
             padding: 0;
             font-family: 'Verdana', sans-serif;
         }
+
         .container {
             display: grid;
             grid-template-areas:
                 "header header header"
-                "left-menu top-menu right-menu"
-                "left-menu content-right content-right"
-                "left-menu bottom-menu right-menu"
+                "menu-top menu-top menu-top"
+                "left-menu content right-menu"
+                "left-menu content right-menu"
+                "menu-bottom menu-bottom menu-bottom"
                 "footer footer footer";
             grid-template-columns: 1fr 3fr 1fr;
             grid-template-rows: auto;
             gap: 10px;
         }
+
         .header {
             grid-area: header;
+            display: flex;
+            justify-content: space-between;
             background-color: #f2f2f2;
             border: 2px solid red;
             padding: 10px;
-            display: flex;
-            justify-content: space-between;
         }
+
         .header .logo {
-            width: 100px;
-            height: 100px;
+            width: 150px;
             background-color: lightblue;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .header .info {
-            background-color: yellow;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
+
+        .header .site-name {
             flex-grow: 1;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightyellow;
         }
-        .header .info div {
-            margin: 0 10px;
+
+        .header .auth {
+            width: 150px;
+            background-color: lightgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .menu-left, .menu-right, .menu-bottom {
-            background-color: #ffcccc;
+
+        .menu-top, .menu-bottom {
+            background-color: lightcoral;
             border: 2px solid red;
+            padding: 10px;
+            text-align: center;
+            grid-column: span 3;
         }
-        .menu-left {
-            grid-area: left-menu;
+
+        .left-menu, .right-menu {
+            padding: 10px;
+            border: 2px solid red;
             display: flex;
             flex-direction: column;
+            gap: 10px;
         }
-        .menu-left div {
-            margin: 10px;
-            background-color: lightgreen;
-            padding: 10px;
-            border: 2px solid red;
+
+        .left-menu {
+            grid-area: left-menu;
+            background-color: lightpink;
         }
-        .menu-right {
+
+        .right-menu {
             grid-area: right-menu;
             background-color: lightyellow;
-            padding: 10px;
-            border: 2px solid red;
         }
-        .menu-bottom {
-            grid-area: bottom-menu;
+
+        .menu-item, .info-item {
+            padding: 10px;
+            border: 1px solid red;
+            background-color: white;
+        }
+
+        .content {
+            grid-area: content;
             background-color: lightblue;
             padding: 10px;
             border: 2px solid red;
-        }
-        .top-menu {
-            grid-area: top-menu;
-            background-color: #f2f2f2;
-            border: 2px solid red;
-            padding: 10px;
-            display: flex;
-            justify-content: space-around;
-        }
-        .content-right {
-            grid-area: content-right;
             display: flex;
             flex-direction: column;
         }
+
         .banner {
-            background-color: lightblue;
+            margin-bottom: 10px;
+            background-color: lightyellow;
+            border: 2px solid red;
+            max-height: 250px;
+        }
+
+        .content-text {
+            margin-bottom: 10px;
+            background-color: lightyellow;
             padding: 20px;
             border: 2px solid red;
-            margin-bottom: 10px;
-            text-align: center;
         }
-        .content {
+
+        .content-photo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .content-photo {
             background-color: lightyellow;
-            padding: 10px;
             border: 2px solid red;
-            margin-bottom: 10px;
+            padding: 20px;
+            max-width: 300px;
+            margin-right: 10px; /* Отступ между фото и текстом */
         }
+
+        .content-photo img {
+            max-width: 100%;
+        }
+
+        .content-photo-text {
+            background-color: lightyellow;
+            border: 2px solid red;
+            padding: 20px;
+            flex-grow: 1; /* Занимает оставшееся пространство */
+        }
+
         .footer {
             grid-area: footer;
             background-color: #f2f2f2;
-            border: 2px solid red;
             padding: 10px;
+            border: 2px solid red;
             text-align: center;
         }
     </style>
@@ -118,50 +157,141 @@
 
 <div class="container">
     <div class="header">
-        <div class="logo">Лого</div>
-        <div class="info">
-            <div>Контактная информация: +7 (123) 456-78-90</div>
-            <div>Авторизация</div>
+        <div class="logo"><img src="{% static 'conprogs/images/logo.png' %}" alt="Логотип" width="80"></div>
+        <div class="site-name"><b>MY LIFE</b></div>
+        <div class="auth">Авторизация</div>
+    </div>
+
+    <div class="menu-top">
+        <a href="{% url 'index_3_lab5' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="left-menu">
+        <div class="menu-item">
+            {% for m in menu_cat %}
+            <div><a href="{% url m.url_name %}">{{ m.title }}</a></div>
+            {% endfor %}
+        </div>
+        <div class="menu-item"><h2>Опрос о спортсмене</h2>
+            <form>
+                <div class="question">
+                    <p>Считаете ли вы себя спортсменом?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="athlete" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="athlete" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Занимаетесь ли вы спортом регулярно?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="regular" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="regular" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Участвовали ли вы когда-либо в соревнованиях?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="competitions" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="competitions" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit">Отправить</button>
+                </div>
+            </form>
+        </div>
+        <div class="menu-item"><img src="{% static 'conprogs/images/img_13.png' %}" alt="Фото" width="500"></div>
+    </div>
+
+    <div class="content">
+        <div class="banner">
+            <img src="{% static 'conprogs/images/img_11.png' %}" alt="Баннер" style="width: 100%; height: 100%;">
+        </div>
+        <div class="content-photo-container">
+            <div class="content-photo">
+                <img src="{% static 'conprogs/images/img.png' %}" alt="Фото">
+            </div>
+            <div class="content-photo-text">
+                <p><b>Описание фотографии:</b> Фотография сделана на новый паспорт.</p>
+            </div>
+        </div>
+        <div class="content-text">
+            <p><b>Меня зовут Лысенков Филипп Сергеевич.</b> Место рождения: город Красноярск,
+                Красноярский край. Время рождения: 08:47 по местному времени (+4 от московского времени).
+                <u>Дата рождения: двадцать второе апреля две тысячи третьего года.</u> Знак зодиака: телец.
+                Воспитывался в полной семье. Разница в возрасте с родителями 30 лет. В детстве у меня был
+                электрический квадроцикл.
+            </p>
+            <p class="highlight">
+                <i>Первое место жительства:</i> квартира по улице Софьи Ковалевской. Второе место жительства:
+                квартира в центре города напротив Красной Площади. На второй квартире я получил свой первый
+                ожог — дотронулся до горячего утюга. <b>Третье и крайнее в городе Красноярск мое место
+                жительства:</b> квартира по адресу Новая Заря 25. В детском саду начал заниматься тхэквондо.
+                Впоследствии получил приглашение в школу олимпийского резерва.
+            </p>
+            <p class="school-info">
+                <b>Школа.</b> Первого сентября две тысячи десятого года я пошел в первый класс в школу
+                «Гимназия №3». В это же время посетил свою первую тренировку по футболу. Первый класс окончил
+                с одной тройкой. Школа с углубленным изучением английского, французского и немецкого языков.
+                Со второго класса почувствовал тягу к знаниям языков. Между французским и немецким выбрал
+                французский.
+            </p>
+            <p class="achievement">
+                В 8 классе перешел в новую школу: «Гимназия №1 Универс». Там получил среднее образование.
+                Выступал за школьные команды по футболу. Ничего стоящего не выиграл. Параллельно занимался
+                саморазвитием. Участвовал в олимпиадах по химии и физике. В девятом классе стал чемпионом
+                «Кубка Сибири». В школе также обучался по программе «Микроэлектроника» и заработал сертификат.
+            </p>
+            <p class="misc-info">
+                <i>Всегда интересовался музыкой.</i> Читаю книги в основном британских авторов. <b>Не женат,
+                хотя склоняют.</b> Нет детей, рано. Есть работа. Не привлекался к административной или
+                уголовной ответственности. Нет клички или погоняла. Прохожу периодические медицинские
+                обследования. Люблю кошек и котов. <u>Нет четкого вероисповедания.</u> Жизнь — лучший
+                драматург.
+            </p>
         </div>
     </div>
 
-    <div class="top-menu">
-        <div>Главная</div>
-        <div>О нас</div>
-        <div>Контакты</div>
-        <div>Услуги</div>
-    </div>
-
-    <div class="menu-left">
-        <div>Меню каталог</div>
-        <div>Опрос: Как вам наш сайт?</div>
-        <div>Информер: Новости компании</div>
-    </div>
-
-    <div class="content-right">
-        <div class="banner">Баннер</div>
-        <div class="content">
-            <h2>Заголовок статьи</h2>
-            <p>Это пример текста для основного блока контента. Здесь может быть любой текст, который нужно разместить на сайте. Можно написать статью или новости компании.</p>
+    <div class="right-menu">
+        <div class="info-item">Солнечный свет - он весит что-нибудь?
+            Ответ: <b>Да</b>.
+            Объяснение: Солнечный свет состоит из фотонов, несущихся от Солнца к Земле. Масса общего света, попадающего
+            на Землю, составляет 3,7 * 10 в 24-й степени кг. В солнечный день город Чикаго весит на 140 кг больше, чем в
+            пасмурный, - и всё из-за того, что на него падает столько света.
         </div>
-        <div class="content">
-            <h2>Дополнительный текст</h2>
-            <p>Это ещё один блок текста для демонстрации возможности добавления нескольких блоков контента на страницу.</p>
-        </div>
+        <div class="info-item"><img src="{% static 'conprogs/images/img_12.png' %}" alt="Фото" width="300"></div>
     </div>
 
-    <div class="menu-right">
-        <div>Текстовый блок справа</div>
-        <div>Информер: Курсы валют</div>
-    </div>
-
-    <div class="menu-bottom">
-        Нижнее меню: Политика конфиденциальности
+    <div class="menu-bottom"><a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
     </div>
 
     <div class="footer">
-        <p>&copy; 2024 Все права защищены</p>
-        <p>Контактная информация: email@example.com</p>
+        <p>&copy; 2024 Лысенков Филипп</p>
+        <div class="footer-info">
+            <p>Внешние ссылки:</p>
+            <p><a href="https://mgupp.ru">Ссылка на РОСБИОТЕХ</a></p>
+        </div>
     </div>
 </div>
 
