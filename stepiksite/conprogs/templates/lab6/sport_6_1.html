@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общие сведения</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #ffeb3b;
+            color: black;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+            border: 2px solid #000000;
+        }
+
+        .container {
+            display: flex;
+            flex-grow: 1;
+            border: 3px dotted #8B0000;
+        }
+
+        .nav {
+            background-color: #ffeb3b;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 200px;
+            flex-shrink: 0;
+            border-right: 4px double #4682B4;
+        }
+
+        .nav a {
+            display: block;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: black;
+            background-color: #f0f0f0;
+            border: 2px solid #8B4513;
+        }
+
+        .nav a:hover {
+            background-color: #dcdcdc;
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #800080;
+            background-color: #ffcccb;
+        }
+
+        .title {
+            background-color: #90EE90;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+            border-bottom: 2px dashed #2E8B57;
+            flex-shrink: 0;
+        }
+
+        .content-table {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .image-col, .text-col {
+            flex: 1;
+            padding: 20px;
+            border: 2px groove #FF4500;
+        }
+
+        .image-col {
+            background-color: #ADD8E6;
+            text-align: center;
+        }
+
+        .text-col {
+            background-color: #FFFACD;
+        }
+
+        .text-col p {
+            font-size: 18px;
+            color: #8b4513;
+            text-align: justify;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ddd;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    Название сайта: MY LIFE | Автор: Лысенков Филипп Сергеевич
+</div>
+
+<div class="container">
+
+    <div class="nav">
+        <a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
+<div class="content">
+        <div class="content-wrapper">
+            <div class="title">
+                Спорт
+            </div>
+            <div class="content-table">
+                <div class="image-col">
+                    <img src="{% static 'conprogs/images/img_2.png' %}" alt="Фото" width="300">
+                </div>
+                <div class="text-col">
+                    <p style="font-size: 18px; color: #4682b4; text-align: justify;">
+                        <i>Бей своих чтобы чужие боялись.</i> Как говорил ранее, с 6 лет занимался
+                        <strong>тхэквондо</strong>. Призер
+                        Сибирских, победитель краевых и участник всероссийских соревнований. Тренировался в
+                        школе олимпийского резерва.
+                        <u>Травмы</u> и большая любовь к футболу закончили мое выступление в данной дисциплине.
+                        Большое уважение к тренеру за его вложения в меня.
+                    </p>
+                    <p style="margin-left: 25px; font-size: 20px; color: #8b0000; text-align: left;">
+                        <b>Профессионал?</b> Почти каждый мальчик, который влюбляется в футбол, хочет однажды
+                        оказаться на большом европейском стадионе в числе двадцати двух игроков. Победы и поражения чередовались с
+                        травмами, слезами и тяжелыми тренировками. По окончанию детско-юношеской школы, мне предложили подписать контракт с
+                        местной полупрофессиональной командой. <s>Отказался.</s>
+                    </p>
+                    <p class="border-groove bg-lightyellow"
+                       style="text-align: center; font-size: 20px; color: #2e8b57;">
+                        <u>Футбол и Москва.</u> Детство и юношество в футболе были как одно большое кино.
+                        Сильная и сплоченная команда.
+                        Футбол в Москве начался с попадания в сборную РосБиоТеха. Впоследствии, как и по сей
+                        день, я стал капитаном команды.
+                    </p>
+                    <p class="border-ridge bg-lightblue"
+                       style="text-align: justify; font-size: 18px; color: #191970;">
+                        <b>Успех не за горами.</b> Формирование команды заняло почти два года. Наконец мы
+                        получили готовый состав. Парни готовы бороться за каждый мяч и каждую минуту.
+                    </p>
+                    <p class="border-dashed bg-wheat"
+                       style="text-align: left; margin-left: 15px; font-size: 20px; color: #daa520;">
+                        <i>Любитель.</i> Москва как мегаполис имеет множество возможностей, в том числе и
+                        спортивных. Любительские лиги в Москве на высоком уровне.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Лысенков Филипп</p>
+</footer>
+
+</body>
+</html>
