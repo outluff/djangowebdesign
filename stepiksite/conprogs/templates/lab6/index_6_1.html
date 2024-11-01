@@ -26,31 +26,37 @@
             font-weight: bold;
             flex-shrink: 0;
             border: 2px dashed black;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .container {
             display: flex;
+            flex-direction: column;
             flex-grow: 1;
             border: 3px dotted black;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .nav {
             background-color: #ffeb3b;
             padding: 10px;
             box-sizing: border-box;
-            width: 200px;
-            flex-shrink: 0;
-            border-right: 2px solid blue;
+            border-bottom: 2px solid blue;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .nav a {
-            display: block;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 8px 12px;
             text-decoration: none;
             color: black;
             background-color: #f0f0f0;
             border: 1px solid green;
+            text-align: center;
         }
 
         .nav a:hover {
@@ -61,10 +67,11 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             background-color: #f5f5f5;
             padding: 20px;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .content-wrapper {
@@ -74,6 +81,8 @@
             height: 100%;
             border: 1px solid red;
             background-color: yellow;
+            box-sizing: border-box;
+            text-align: left;
         }
 
         .title {
@@ -82,18 +91,22 @@
             text-align: center;
             font-size: 24px;
             border-bottom: 2px dotted purple;
-            flex-shrink: 0;
         }
 
         .content-table {
             display: flex;
             flex-grow: 1;
+            width: 100%;
+            flex-wrap: wrap;
+            box-sizing: border-box;
         }
 
         .image-col, .text-col {
             flex: 1;
             padding: 20px;
             border: 1px solid black;
+            box-sizing: border-box;
+            min-width: 200px;
         }
 
         .image-col {
@@ -107,19 +120,19 @@
         }
 
         .text-col p {
-            font-size: 18px;
+            font-size: 16px;
             color: #8b4513;
             text-align: justify;
         }
 
         .highlight {
-            font-size: 20px;
+            font-size: 18px;
             color: #4682b4;
             margin-left: 25px;
         }
 
         .school-info {
-            font-size: 16px;
+            font-size: 14px;
             color: #191970;
             text-align: right;
             border: 3px solid magenta;
@@ -128,7 +141,7 @@
         }
 
         .achievement {
-            font-size: 22px;
+            font-size: 20px;
             color: #2e8b57;
             text-align: center;
             border: 2px dashed brown;
@@ -137,19 +150,59 @@
         }
 
         .misc-info {
-            font-size: 18px;
+            font-size: 16px;
             color: #800000;
             text-align: justify;
             border: 1px solid black;
             padding: 15px;
             background-color: #f5deb3;
         }
-footer {
+
+        footer {
             text-align: center;
             padding: 10px;
             background-color: #ddd;
             flex-shrink: 0;
             border-top: 2px solid navy;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        @media (min-width: 400px) and (max-width: 800px) {
+            .nav {
+                order: -1;
+            }
+            .nav a {
+                padding: 8px 10px;
+                margin: 5px;
+            }
+        }
+
+        @media (max-width: 399px) {
+            .header {
+                font-size: 20px;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            .nav a {
+                width: 100%;
+                margin: 2px 0;
+            }
+            .content-table {
+                flex-direction: column;
+                align-items: center;
+            }
+            .image-col, .text-col {
+                padding: 10px;
+                border: none;
+                width: 100%;
+            }
+            .text-col p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
