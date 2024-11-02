@@ -4,120 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Общие сведения</title>
-    <style>
-        body {
-            font-family: 'Verdana', sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            background-color: #ffeb3b;
-            color: black;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            flex-shrink: 0;
-            border: 3px solid #000080;
-        }
-
-        .container {
-            display: flex;
-            flex-grow: 1;
-            border: 2px dashed #8b0000;
-        }
-
-        .nav {
-            background-color: #ffeb3b;
-            padding: 10px;
-            box-sizing: border-box;
-            width: 200px;
-            flex-shrink: 0;
-            border-right: 5px double #ff4500;
-        }
-
-        .nav a {
-            display: block;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: black;
-            background-color: #f0f0f0;
-            border: 2px dotted #2e8b57;
-        }
-
-        .nav a:hover {
-            background-color: #dcdcdc;
-        }
-
-        .content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
-
-        .content-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            border: 4px solid #2f4f4f;
-            background-color: #f0e68c;
-        }
-
-        .title {
-            background-color: #daa520;
-            padding: 10px;
-            text-align: center;
-            font-size: 24px;
-            border-bottom: 2px solid #a52a2a;
-            flex-shrink: 0;
-        }
-
-        .content-table {
-            display: flex;
-            flex-grow: 1;
-        }
-
-        .image-col, .text-col {
-            flex: 1;
-            padding: 20px;
-            border: 3px ridge #00008b;
-        }
-
-        .image-col {
-            background-color: #f0e68c;
-            text-align: center;
-        }
-
-        .text-col {
-            background-color: #f0e68c;
-        }
-
-        .text-col p {
-            font-size: 18px;
-            color: #8b4513;
-            text-align: justify;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #ddd;
-            flex-shrink: 0;
-        }
-    </style>
+    <title>Киберспорт</title>
+    <link rel="stylesheet" href="{% static 'conprogs/css/styles_lab6.css' %}">
 </head>
 <body>
 
@@ -128,7 +16,7 @@
 <div class="container">
 
     <div class="nav">
-        <a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        <a href="{% url 'index_1_lab6' %}">Общие сведения</a>
         {% for m in menu %}
         <a href="{% url m.url_name %}">{{ m.title }}</a>
         {% endfor %}
@@ -136,11 +24,11 @@
     <div class="content">
         <div class="content-wrapper">
             <div class="title">
-                Спорт
+                Киберспорт
             </div>
             <div class="content-table">
                 <div class="image-col">
-                    <img src="{% static 'conprogs/images/img_3.png' %}" alt="Фото">
+                    <img src="{% static 'conprogs/images/img_3.png' %}" alt="Фото" style="max-width: 100%; height: auto;">
                 </div>
                 <div class="text-col">
                     <p class="border-color-1"
@@ -185,8 +73,7 @@
                         игре <span style="text-decoration: underline;">Dota 2</span>. Игра забирает нервы, силы,
                         желание, но ты все равно каждый раз возвращаешься и пытаешься доказать себе в первую очередь.
                         Командные игры всегда будут интересны. В первую очередь это способ социализации. Именно в этой
-                        игре я понял, что каждый человек – индивид, и не все люди во время игры похожи на себя в
-                        реальной жизни.
+                        игре я понял, что каждый человек – индивид. Как оказалось, я неплохо поработал в этом жанре.
                     </p>
                 </div>
             </div>
