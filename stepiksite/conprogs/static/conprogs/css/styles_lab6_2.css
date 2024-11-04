@@ -1,0 +1,283 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Verdana', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Общие стили для шапки */
+.header {
+    display: flex;
+    background-color: #ffcc00;
+    padding: 10px;
+    border-bottom: 2px solid #333;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.header-title {
+    text-align: center;
+    font-size: 24px;
+    flex: 1 1 100%;
+    max-width: 100%;
+}
+
+.logo {
+    text-align: center;
+    max-width: 100px;
+    padding: 5px;
+}
+
+.header-author {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    flex: 1 1 100%;
+    padding: 5px;
+    max-width: 100%;
+}
+
+.breadcrumbs {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #e6e6e6;
+    text-align: center;
+    border-bottom: 1px solid #888;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #333;
+    padding: 10px;
+    max-width: 100%;
+}
+
+.nav {
+    background-color: #ffcc99;
+    padding: 10px;
+    width: 100%;
+    max-width: 200px;
+    border-right: 2px solid #888;
+}
+
+.nav p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nav a {
+    display: block;
+    padding: 5px;
+    margin: 5px 0;
+    text-decoration: none;
+    color: black;
+    background-color: #ffeecc;
+    border: 1px solid #999;
+    width: 100%;
+    text-align: center;
+}
+
+.nav a:hover {
+    background-color: #ffdd99;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 2px solid #888;
+    width: calc(100% - 220px);
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+.title {
+    background-color: #add8e6;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.content-table {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.image-col {
+    background-color: #c1ffc1;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 50%;
+    border: 1px solid #228b22;
+    box-sizing: border-box;
+}
+
+.text-col {
+    background-color: #f5deb3;
+    padding: 10px;
+    text-align: justify;
+    width: 100%;
+    max-width: 50%;
+    border: 1px solid #8b4513;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #ddd;
+    font-size: 14px;
+    border-top: 2px solid #555;
+    width: 100%;
+}
+
+/* Стили для ПК (более 800 пикселей) */
+@media (min-width: 801px) {
+    .header {
+        flex-direction: row;
+    }
+
+    .breadcrumbs {
+        display: block;
+        width: calc(100% - 220px);
+        margin-left: 200px;
+    }
+
+    .container {
+        flex-direction: row;
+    }
+
+    .content {
+        width: calc(100% - 220px);
+    }
+
+    .content-table {
+        flex-direction: row;
+    }
+}
+
+/* Стили для планшетов (от 400 до 800 пикселей) */
+@media (min-width: 400px) and (max-width: 800px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-title {
+        order: 1;
+        font-size: 20px;
+    }
+
+    .logo, .header-author {
+        width: 100%;
+        text-align: center;
+        order: 2;
+    }
+
+    .breadcrumbs {
+        width: 100%;
+        order: 3;
+        font-size: 12px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        font-size: 12px;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .content-table {
+        flex-direction: row;
+    }
+
+    .image-col, .text-col {
+        width: 50%;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
+
+/* Стили для телефонов (менее 400 пикселей) */
+@media (max-width: 399px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-title {
+        font-size: 18px;
+    }
+
+    .logo, .header-author {
+        width: 100%;
+        text-align: center;
+    }
+
+    .breadcrumbs {
+        display: none;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .nav {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .nav a {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .content-table {
+        flex-direction: column;
+    }
+
+    .image-col, .text-col {
+        width: 100%;
+    }
+
+    .text-col {
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
