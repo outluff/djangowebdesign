@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структура сайта</title>
+    <link rel="stylesheet" href="{% static 'conprogs/css/styles_lab6_3.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo"><img src="{% static 'conprogs/images/logo.png' %}" alt="Логотип" width="80"></div>
+        <div class="site-name"><b>MY LIFE</b></div>
+        <div class="auth">Авторизация</div>
+    </div>
+
+    <div class="menu-top">
+        <a href="{% url 'index_3_lab6' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="left-menu">
+        <div class="menu-item">
+            {% for m in menu_cat %}
+            <div><a href="{% url m.url_name %}">{{ m.title }}</a></div>
+            {% endfor %}
+        </div>
+        <div class="menu-item"><h2>Опрос о спортсмене</h2>
+            <form>
+                <div class="question">
+                    <p>Считаете ли вы себя спортсменом?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="athlete" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="athlete" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Занимаетесь ли вы спортом регулярно?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="regular" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="regular" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Участвовали ли вы когда-либо в соревнованиях?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="competitions" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="competitions" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit">Отправить</button>
+                </div>
+            </form>
+        </div>
+        <div class="menu-item"><img src="{% static 'conprogs/images/img_13.png' %}" alt="Фото" width="500"></div>
+    </div>
+
+    <div class="content">
+        <div class="banner">
+            <img src="{% static 'conprogs/images/img_11.png' %}" alt="Баннер" style="width: 100%; height: 100%;">
+        </div>
+        <div class="content-photo-container">
+            <div class="content-photo">
+                <img src="{% static 'conprogs/images/img.png' %}" alt="Фото">
+            </div>
+            <div class="content-photo-text">
+                <p><b>Описание фотографии:</b> Фотография сделана на новый паспорт.</p>
+            </div>
+        </div>
+        <div class="content-text">
+            <p><b>Меня зовут Лысенков Филипп Сергеевич.</b> Место рождения: город Красноярск,
+                Красноярский край. Время рождения: 08:47 по местному времени (+4 от московского времени).
+                <u>Дата рождения: двадцать второе апреля две тысячи третьего года.</u> Знак зодиака: телец.
+                Воспитывался в полной семье. Разница в возрасте с родителями 30 лет. В детстве у меня был
+                электрический квадроцикл.
+            </p>
+            <p class="highlight">
+                <i>Первое место жительства:</i> квартира по улице Софьи Ковалевской. Второе место жительства:
+                квартира в центре города напротив Красной Площади. На второй квартире я получил свой первый
+                ожог — дотронулся до горячего утюга. <b>Третье и крайнее в городе Красноярск мое место
+                жительства:</b> квартира по адресу Новая Заря 25. В детском саду начал заниматься тхэквондо.
+                Впоследствии получил приглашение в школу олимпийского резерва.
+            </p>
+            <p class="school-info">
+                <b>Школа.</b> Первого сентября две тысячи десятого года я пошел в первый класс в школу
+                «Гимназия №3». В это же время посетил свою первую тренировку по футболу. Первый класс окончил
+                с одной тройкой. Школа с углубленным изучением английского, французского и немецкого языков.
+                Со второго класса почувствовал тягу к знаниям языков. Между французским и немецким выбрал
+                французский.
+            </p>
+            <p class="achievement">
+                В 8 классе перешел в новую школу: «Гимназия №1 Универс». Там получил среднее образование.
+                Выступал за школьные команды по футболу. Ничего стоящего не выиграл. Параллельно занимался
+                саморазвитием. Участвовал в олимпиадах по химии и физике. В девятом классе стал чемпионом
+                «Кубка Сибири». В школе также обучался по программе «Микроэлектроника» и заработал сертификат.
+            </p>
+            <p class="misc-info">
+                <i>Всегда интересовался музыкой.</i> Читаю книги в основном британских авторов. <b>Не женат,
+                хотя склоняют.</b> Нет детей, рано. Есть работа. Не привлекался к административной или
+                уголовной ответственности. Нет клички или погоняла. Прохожу периодические медицинские
+                обследования. Люблю кошек и котов. <u>Нет четкого вероисповедания.</u> Жизнь — лучший
+                драматург.
+            </p>
+        </div>
+    </div>
+
+    <div class="right-menu">
+        <div class="info-item">Солнечный свет - он весит что-нибудь?
+            Ответ: <b>Да</b>.
+            Объяснение: Солнечный свет состоит из фотонов, несущихся от Солнца к Земле. Масса общего света, попадающего
+            на Землю, составляет 3,7 * 10 в 24-й степени кг. В солнечный день город Чикаго весит на 140 кг больше, чем в
+            пасмурный, - и всё из-за того, что на него падает столько света.
+        </div>
+        <div class="info-item"><img src="{% static 'conprogs/images/img_12.png' %}" alt="Фото" width="300"></div>
+    </div>
+
+    <div class="menu-bottom"><a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Лысенков Филипп</p>
+        <div class="footer-info">
+            <p>Внешние ссылки:</p>
+            <p><a href="https://mgupp.ru">Ссылка на РОСБИОТЕХ</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

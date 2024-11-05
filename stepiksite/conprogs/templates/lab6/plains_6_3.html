@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структура сайта</title>
+    <link rel="stylesheet" href="{% static 'conprogs/css/styles_lab6_3.css' %}">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo"><img src="{% static 'conprogs/images/logo.png' %}" alt="Логотип" width="80"></div>
+        <div class="site-name"><b>MY LIFE</b></div>
+        <div class="auth">Авторизация</div>
+    </div>
+
+    <div class="menu-top">
+        <a href="{% url 'index_3_lab6' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="left-menu">
+        <div class="menu-item">
+            {% for m in menu_cat %}
+            <div><a href="{% url m.url_name %}">{{ m.title }}</a></div>
+            {% endfor %}
+        </div>
+        <div class="menu-item"><h2>Опрос о спортсмене</h2>
+            <form>
+                <div class="question">
+                    <p>Считаете ли вы себя спортсменом?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="athlete" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="athlete" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Занимаетесь ли вы спортом регулярно?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="regular" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="regular" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>Участвовали ли вы когда-либо в соревнованиях?</p>
+                    <div class="buttons">
+                        <label>
+                            <input type="radio" name="competitions" value="yes"> Да
+                        </label>
+                        <label>
+                            <input type="radio" name="competitions" value="no"> Нет
+                        </label>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit">Отправить</button>
+                </div>
+            </form>
+        </div>
+        <div class="menu-item"><img src="{% static 'conprogs/images/img_13.png' %}" alt="Фото" width="500"></div>
+    </div>
+
+    <div class="content">
+        <div class="banner">
+            <img src="{% static 'conprogs/images/img_11.png' %}" alt="Баннер" style="width: 100%; height: 100%;">
+        </div>
+        <div class="content-photo-container">
+            <div class="content-photo">
+                <img src="{% static 'conprogs/images/img_4.png' %}" alt="Фото">
+                <img src="{% static 'conprogs/images/img_5.png' %}" alt="Фото">
+            </div>
+            <div class="content-photo-text">
+                <p><b>Описание фотографий:</b> Калининград 2024</p>
+            </div>
+        </div>
+        <div class="content-text">
+            <p><strong><em>Родственники.</em></strong> <u>Я посетил немало городов</u> внутри России. Моих
+                родственников раскидало по необъятной. Я посещал их в Саратове, Самаре, Пензе, Санкт-Петербурге.
+                И это только часть моих родственников. Каждый город уникален, не только своим внешним видом,
+                но и людьми. Любой город, каким бы он ни был, запомнился мне чем-то определенным. Одна река
+                Волга чего стоит.</p>
+
+            <p><strong>Работа.</strong> Я был в командировках в городах Владимир, Новосибирск и Омск. Как
+                говорил ранее, каждый город имеет свои особенности. Владимир, хоть и достаточно тихий город,
+                но его красота, постройки, парки, церкви, история, все это отличает его от остальных. Омск
+                достаточно большой город, как Красноярск или Новосибирск. Город живет хоккеем. Сибиряки все
+                одинаковы.</p>
+
+            <p><u><em>Жара.</em></u> Турция, Тайланд, многие россияне любят данные направления для отдыха.
+                Я со своей семьей не раз был в этих двух странах. Свои культуры, свои люди, свои обычаи и
+                достопримечательности. Море. Каждый город или остров в этих двух странах отличается от
+                предыдущего. Свои правила и свой менталитет. Сама атмосфера этих стран тебя расслабляет.</p>
+
+            <p><strong>Сочи.</strong> Одно из любимых моих мест. В этом городе я посетил первый свой большой
+                футбольный матч, кубок конфедераций. Отличная атмосфера, хороший футбол, прекрасная программа до
+                и после матч, невероятная погода. Черное море поистине прекрасно. Вечерние прогулки на катере или
+                пешком, на электросамокате или мотоцикле. Сочи заметно отличается от других русских городов.</p>
+
+            <p><u>Казань.</u> Прекрасный город, иная культура. Красота города не сравнима ни с чем. Также я
+                посетил в этом городе свой первый в жизни матч чемпионата мира по футболу. Десятки тысяч людей,
+                стадион гудит, город не спит. Один из лучших городов, что я посещал.</p>
+
+            <p>Конец? Наконец, переезд в Москву. Город, о котором можно говорить бесконечно. Красота
+                сочетается с серостью всех российских городов, количество людей соизмеримо стране, как и
+                возможности. До переезда я посещал Москву туристом, но быть полноценным жителем и туристом
+                далеко разные вещи.</p>
+
+            <p><s>Недавно.</s> Всегда хотел побывать в Калининграде. Город очень сильно выделяется на фоне
+                остальных российских городов. Во-первых, своей инфраструктурой. Во-вторых, историей. Балтийское
+                море. В реальности, в отличие от фото, невозможно оторвать глаз. Красивый город и хорошие люди.</p>
+        </div>
+    </div>
+
+    <div class="right-menu">
+        <div class="info-item">Солнечный свет - он весит что-нибудь?
+            Ответ: <b>Да</b>.
+            Объяснение: Солнечный свет состоит из фотонов, несущихся от Солнца к Земле. Масса общего света, попадающего
+            на Землю, составляет 3,7 * 10 в 24-й степени кг. В солнечный день город Чикаго весит на 140 кг больше, чем в
+            пасмурный, - и всё из-за того, что на него падает столько света.
+        </div>
+        <div class="info-item"><img src="{% static 'conprogs/images/img_12.png' %}" alt="Фото" width="300"></div>
+    </div>
+
+    <div class="menu-bottom"><a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Лысенков Филипп</p>
+        <div class="footer-info">
+            <p>Внешние ссылки:</p>
+            <p><a href="https://mgupp.ru">Ссылка на РОСБИОТЕХ</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
