@@ -453,6 +453,7 @@ menu_lab6_2 = [{'title': 'Family', 'url_name': 'fam_2_lab6'},
                {'title': 'Cybersport', 'url_name': 'cybersport_2_lab6'},
                {'title': 'Plains', 'url_name': 'plains_2_lab6'},
                {'title': 'задание 1', 'url_name': 'index_1_lab6'},
+               {'title': 'задание 3', 'url_name': 'index_3_lab6'},
                ]
 
 
@@ -479,3 +480,36 @@ def lab6_2_cybersport(request):
 def lab6_2_plains(request):
     data = {'title': "Перелеты, поезда", 'menu': menu_lab6_2}
     return render(request, 'lab6/plains_6_2.html', context=data)
+
+
+menu_lab6_3 = [{'title': 'Family', 'url_name': 'fam_3_lab6'},
+               {'title': 'Sport', 'url_name': 'sport_3_lab6'},
+               {'title': 'Cybersport', 'url_name': 'cybersport_3_lab6'},
+               {'title': 'Plains', 'url_name': 'plains_3_lab6'},
+               {'title': 'задание 2', 'url_name': 'index_2_lab6'},
+               ]
+
+
+def lab6_3_index(request):
+    data = {'title': "Общие сведения", 'menu': menu_lab6_3, 'menu_cat': menu_cat}
+    return render(request, 'lab6/index_6_3.html', context=data)
+
+
+def lab6_3_fam(request):
+    data = {'title': "Семья", 'menu': menu_lab6_3, 'menu_cat': menu_cat}
+    return render(request, 'lab6/fam_6_3.html', context=data)
+
+
+def lab6_3_sport(request):
+    data = {'title': "Спорт", 'menu': menu_lab6_3, 'menu_cat': menu_cat}
+    return render(request, 'lab6/sport_6_3.html', context=data)
+
+
+def lab6_3_cybersport(request):
+    data = {'title': "Киберспорт", 'menu': menu_lab6_3, 'menu_cat': menu_cat}
+    return render(request, 'lab6/cybersport_6_3.html', context=data)
+
+
+def lab6_3_plains(request):
+    data = {'title': "Перелеты, поезда", 'menu': menu_lab6_3, 'menu_cat': menu_cat}
+    return render(request, 'lab6/plains_6_3.html', context=data)

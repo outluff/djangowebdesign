@@ -1,283 +1,376 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Verdana', sans-serif;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-}
-
-/* Общие стили для шапки */
-.header {
-    display: flex;
-    background-color: #ffcc00;
-    padding: 10px;
-    border-bottom: 2px solid #333;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 100%;
-}
-
-.header-title {
-    text-align: center;
-    font-size: 24px;
-    flex: 1 1 100%;
-    max-width: 100%;
-}
-
-.logo {
-    text-align: center;
-    max-width: 100px;
-    padding: 5px;
-}
-
-.header-author {
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-    flex: 1 1 100%;
-    padding: 5px;
-    max-width: 100%;
-}
-
-.breadcrumbs {
-    padding: 10px;
-    font-size: 14px;
-    background-color: #e6e6e6;
-    text-align: center;
-    border-bottom: 1px solid #888;
-    width: 100%;
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    border: 2px solid #333;
-    padding: 10px;
-    max-width: 100%;
-}
-
-.nav {
-    background-color: #ffcc99;
-    padding: 10px;
-    width: 100%;
-    max-width: 200px;
-    border-right: 2px solid #888;
-}
-
-.nav p {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.nav a {
-    display: block;
-    padding: 5px;
-    margin: 5px 0;
-    text-decoration: none;
-    color: black;
-    background-color: #ffeecc;
-    border: 1px solid #999;
-    width: 100%;
-    text-align: center;
-}
-
-.nav a:hover {
-    background-color: #ffdd99;
-}
-
-.content {
-    flex-grow: 1;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 2px solid #888;
-    width: calc(100% - 220px);
-    max-width: 100%;
-    overflow-wrap: break-word;
-}
-
-.title {
-    background-color: #add8e6;
-    padding: 10px;
-    font-size: 20px;
-    text-align: center;
-    border-bottom: 1px solid #333;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.content-table {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.image-col {
-    background-color: #c1ffc1;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    max-width: 50%;
-    border: 1px solid #228b22;
-    box-sizing: border-box;
-}
-
-.text-col {
-    background-color: #f5deb3;
-    padding: 10px;
-    text-align: justify;
-    width: 100%;
-    max-width: 50%;
-    border: 1px solid #8b4513;
-    font-size: 16px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #ddd;
-    font-size: 14px;
-    border-top: 2px solid #555;
-    width: 100%;
-}
-
-/* Стили для ПК (более 800 пикселей) */
 @media (min-width: 801px) {
-    .header {
-        flex-direction: row;
+    .img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 10px;
     }
 
-    .breadcrumbs {
+    body {
+        font-family: Arial, sans-serif;
+        width: 1000px;
+    }
+
+    .container {
+        display: grid;
+        grid-template-areas:
+            "logo header auth"
+            "nav breadcrumb breadcrumb"
+            "nav content content"
+            "nav footer footer";
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 10px;
+        border: 5px inset rgb(158, 154, 154);
+    }
+
+    .logo {
+        grid-area: logo;
+        background-color: rgb(68, 0, 255);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .header {
+        grid-area: header;
+        background-color: rgb(255, 196, 0);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .auth {
+        grid-area: auth;
+        background-color: rgb(0, 255, 242);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .nav {
+        grid-area: nav;
+        flex-direction: column;
+        background-color: rgb(204, 0, 255);
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .breadcrumb {
+        grid-area: breadcrumb;
+        background-color: rgb(255, 0, 64);
+        padding: 10px;
+        text-align: left;
+        border: 1px solid black;
+    }
+
+    .content {
+        grid-area: content;
+        display: grid;
+        grid-template-areas:
+            "title title"
+            "image text";
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        background-color: white;
+        padding: 10px;
+        border: 3px dashed rgb(255, 0, 0);
+    }
+
+    .title {
+        grid-area: title;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid purple;
+    }
+
+    .content .image {
+        background-color: lightgray;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid rgb(21, 255, 0);
+    }
+
+    .content .text {
+        background-color: lightgray;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid rgb(14, 0, 143);
+    }
+
+    .footer {
+        grid-area: footer;
+        background-color: yellow;
+        padding: 10px;
+        text-align: center;
+        border: 2px solid rgb(38, 0, 255);
+    }
+
+    .nav-item {
         display: block;
-        width: calc(100% - 220px);
-        margin-left: 200px;
-    }
-
-    .container {
-        flex-direction: row;
-    }
-
-    .content {
-        width: calc(100% - 220px);
-    }
-
-    .content-table {
-        flex-direction: row;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 5px;
     }
 }
 
-/* Стили для планшетов (от 400 до 800 пикселей) */
 @media (min-width: 400px) and (max-width: 800px) {
-    .header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .header-title {
-        order: 1;
-        font-size: 20px;
-    }
-
-    .logo, .header-author {
+    .img {
         width: 100%;
-        text-align: center;
-        order: 2;
+        height: 100%;
+        object-fit: contain;
+        padding: 10px;
     }
 
-    .breadcrumbs {
-        width: 100%;
-        order: 3;
-        font-size: 12px;
+    body {
+        font-family: Arial, sans-serif;
     }
 
     .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        font-size: 12px;
+        display: grid;
+        grid-template-areas:
+            "header header header"
+            "logo auth auth"
+            "nav nav nav"
+            "breadcrumb breadcrumb breadcrumb"
+            "content content content"
+            "footer footer footer";
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        gap: 10px;
+        border: 5px inset rgb(158, 154, 154);
     }
 
     .content {
-        width: 100%;
+        grid-area: content;
+        display: grid;
+        grid-template-areas:
+            "title title"
+            "image text";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 10px;
+        background-color: white;
+        padding: 10px;
+        border: 3px dashed rgb(255, 0, 0);
     }
 
-    .content-table {
-        flex-direction: row;
+    .title {
+        grid-area: title;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid purple;
     }
 
-    .image-col, .text-col {
-        width: 50%;
+    .header {
+        grid-area: header;
+        background-color: rgb(255, 196, 0);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
     }
 
-    footer {
-        font-size: 12px;
+    .logo {
+        grid-area: logo;
+        background-color: rgb(68, 0, 255);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .auth {
+        grid-area: auth;
+        background-color: rgb(0, 255, 242);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .nav {
+        grid-area: nav;
+        background-color: rgb(204, 0, 255);
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .breadcrumb {
+        grid-area: breadcrumb;
+        background-color: rgb(255, 0, 64);
+        padding: 10px;
+        text-align: left;
+        border: 1px solid black;
+    }
+
+    .content .image {
+        background-color: lightgray;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid rgb(21, 255, 0);
+    }
+
+
+    .content .text {
+        background-color: lightgray;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid rgb(14, 0, 143);
+    }
+
+    .footer {
+        grid-area: footer;
+        background-color: yellow;
+        padding: 10px;
+        text-align: center;
+        border: 2px solid rgb(38, 0, 255);
+    }
+
+    .nav-item {
+        padding: 10px;
+        text-align: center;
     }
 }
 
-/* Стили для телефонов (менее 400 пикселей) */
 @media (max-width: 399px) {
-    .header {
-        flex-direction: column;
-        align-items: center;
-    }
+    .footer {
 
-    .header-title {
-        font-size: 18px;
-    }
-
-    .logo, .header-author {
-        width: 100%;
+        background-color: yellow;
+        padding: 10px;
         text-align: center;
+        border: 2px solid rgb(38, 0, 255);
     }
 
-    .breadcrumbs {
-        display: none;
+    .header {
+
+        background-color: rgb(255, 196, 0);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .breadcrumb {
+
+        background-color: rgb(255, 0, 64);
+        padding: 10px;
+        text-align: left;
+        border: 1px solid black;
+    }
+
+    .auth {
+
+        background-color: rgb(0, 255, 242);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .logo {
+
+        background-color: rgb(68, 0, 255);
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 10px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
     }
 
     .container {
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        padding: 20px;
     }
 
-    .nav {
+    /* Шапка */
+    .header {
+
+        background-color: green;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #000;
+    }
+
+    /* Навигация */
+    .navigation {
+
+        background-color: yellow;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #000;
+    }
+    .nav-item {
+        display: block;
         width: 100%;
-        font-size: 12px;
+        padding: 10px;
+        text-align: center;
     }
+    .header1 {
 
-    .nav a {
-        width: 100%;
+        text-align: center;
+        background-color: red;
+        padding: 10px;
+        border-style: dashed solid;
+        border-color: yellow;
     }
-
     .content {
-        width: 100%;
+        border: 5px solid rgb(255, 3, 129);
+        padding: 20px;
     }
-
-    .content-table {
+    .row {
+        display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+    .column {
+        padding: 20px;
+        border: 1px solid rgb(0, 250, 104);
+        text-align: center;
+    }
+    .nav {
+        grid-area: nav;
+        flex-direction: column;
+        background-color: rgb(204, 0, 255);
+        padding: 10px;
+        border: 1px solid black;
     }
 
-    .image-col, .text-col {
+    .header,
+    .footer,
+    .breadcrumb,
+    .auth,
+    .logo,
+    .navigation,
+    .header1,
+    .content,
+    .nav,
+    .nav-item,
+    .row,
+    .column {
         width: 100%;
+        max-width: 100%;
     }
 
-    .text-col {
-        font-size: 14px;
-    }
-
-    footer {
-        font-size: 12px;
-    }
 }
+
+

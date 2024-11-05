@@ -5,229 +5,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Общие сведения</title>
-    <style>
-        body {
-            font-family: 'Verdana', sans-serif;
-            margin: 0;
-            padding: 0;
-            max-width: 1000px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        .header {
-            background-color: #ffcc00;
-            color: black;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            border: 1px solid #1abc9c;
-        }
-        .header-title {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .header-author {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-right: 20px;
-        }
-        .divider {
-            border-left: 5px dotted #e74c3c;
-            height: 50px;
-            margin: 0 10px;
-        }
-        .breadcrumbs {
-            padding: 10px;
-            font-size: 14px;
-            background-color: #ecf0f1;
-            border: 2px solid #3498db;
-            margin: 10px 0;
-            width: calc(100% - 220px);
-            margin-left: 200px;
-        }
-        .container {
-            display: flex;
-            flex-grow: 1;
-            border: 3px dashed #9b59b6;
-        }
-        .nav {
-            background-color: #ffcc00;
-            padding: 10px;
-            box-sizing: border-box;
-            width: 200px;
-            flex-shrink: 0;
-            border-right: 6px solid #34495e;
-            height: calc(100vh - 100px);
-        }
-        .nav a {
-            display: block;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: black;
-            background-color: #f39c12;
-            border: 4px solid #8e44ad;
-        }
-        .nav a:hover {
-            background-color: #d35400;
-        }
-        .content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #bdc3c7;
-            padding: 20px;
-        }
-        .content-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            border: 5px groove #2ecc71;
-            background-color: #f1c40f;
-        }
-        .title {
-            background-color: #e67e22;
-            padding: 10px;
-            text-align: center;
-            font-size: 24px;
-            border-bottom: 4px double #c0392b;
-            flex-shrink: 0;
-        }
-        .content-table {
-            display: flex;
-            flex-grow: 1;
-        }
-        .image-col, .text-col {
-            flex: 1;
-            padding: 20px;
-            border: 2px solid #3498db;
-        }
-        .image-col {
-            background-color: #eaeaec;
-            text-align: center;
-            border-radius: 10px;
-        }
-        .text-col {
-            background-color: #fff;
-            border: 1px solid #e67e22;
-            border-radius: 5px;
-        }
-        .text-col p {
-            font-size: 18px;
-            color: #34495e;
-            text-align: justify;
-            border: 1px dashed #8e44ad;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #95a5a6;
-            flex-shrink: 0;
-            border-top: 3px solid #2980b9;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'conprogs/css/styles_lab6_2.css' %}">
 </head>
 <body>
 
-<div class="header">
-    <img src="{% static 'conprogs/images/logo.png' %}" alt="Логотип" width="80">
-    <div class="header-title">
+<div class="container">
+    <div class="logo">
+        <img src="{% static 'conprogs/images/logo.png' %}" alt="Логотип" width="80">
+    </div>
+    <div class="header">
         <h1>MY LIFE</h1>
     </div>
-    <div class="divider"></div>
-    <div class="header-author">
+    <div class="auth">
         <p>Автор: Лысенков Филипп Сергеевич</p>
     </div>
-</div>
-
-<div class="breadcrumbs">
-    <a href="{% url 'index_1_lab5' %}">Начало</a> / Киберспорт
-</div>
-
-<div class="container">
-
+    <div class="breadcrumb">
+        <a href="{% url 'index_2_lab6' %}">Начало</a> / Киберспорт
+    </div>
     <div class="nav">
-        <a href="{% url 'index_1_lab5' %}">Общие сведения</a>
+        <a class="nav-item" href="{% url 'index_2_lab6' %}">Общие сведения</a>
         {% for m in menu %}
-        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        <a class="nav-item" href="{% url m.url_name %}">{{ m.title }}</a>
         {% endfor %}
     </div>
-
     <div class="content">
-        <div class="content-wrapper">
-            <div class="title">
-                Киберспорт
-            </div>
-            <div class="content-table">
-                <div class="image-col">
-                    <img src="{% static 'conprogs/images/img_3.png' %}" alt="Фото" width="300">
-                </div>
-                <div class="text-col">
-                    <p style="font-family: 'Verdana', sans-serif; font-size: 18px; text-align: justify; color: #34495e;">
-                        <strong>Начало.</strong> Мое увлечение компьютерным спортом началось с отца. Он начал играть в
-                        <s>CS 1.6</s> и <span style="color: #2980b9;">World of Tanks</span>. Я начал играть вместе с
-                        ним. Мы буквально боролись за игровое время. Он был моим наставником и командиром. Мы были в
-                        топе сильных игроков нашего города. Мы создали свой взвод и участвовали в местных турнирах.
-                        Занимали призовые места.
-                    </p>
+        <div class="title">
+            Киберспорт
+        </div>
+        <div class="image-col">
+            <img src="{% static 'conprogs/images/img_3.png' %}" alt="Фото" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="text-col">
+            <p style="font-family: 'Verdana', sans-serif; font-size: 18px; text-align: justify; color: #34495e;">
+                <strong>Начало.</strong> Мое увлечение компьютерным спортом началось с отца. Он начал играть в
+                <s>CS 1.6</s> и <span style="color: #2980b9;">World of Tanks</span>. Я начал играть вместе с
+                ним. Мы буквально боролись за игровое время. Он был моим наставником и командиром. Мы были в
+                топе сильных игроков нашего города. Мы создали свой взвод и участвовали в местных турнирах.
+                Занимали призовые места.
+            </p>
 
-                    <p style="font-family: 'Times New Roman', serif; font-size: 20px; text-align: left; color: #c0392b;">
-                        <em>Новая глава.</em> Далее на горизонте появился <u>Warface</u>. Игра сильно привлекла мой
-                        интерес и забрала достаточно свободного времени. С друзьями мы были в топ 100 мира. Мы
-                        тренировались, побеждали на турнирах. Посещали турниры в других городах. Некоторые из нас
-                        заключали контракты с крупными организациями и поставили свою жизнь на киберспорт.
-                    </p>
+            <p style="font-family: 'Times New Roman', serif; font-size: 20px; text-align: left; color: #c0392b;">
+                <em>Новая глава.</em> Далее на горизонте появился <u>Warface</u>. Игра сильно привлекла мой
+                интерес и забрала достаточно свободного времени. С друзьями мы были в топ 100 мира. Мы
+                тренировались, побеждали на турнирах. Посещали турниры в других городах. Некоторые из нас
+                заключали контракты с крупными организациями и поставили свою жизнь на киберспорт.
+            </p>
 
-                    <p style="font-family: 'Courier New', monospace; font-size: 16px; text-align: right; color: #16a085; background-color: lightgray; border: 1px solid #e74c3c;">
-                        <strong>Футбол вне поля?</strong> Радость от крутых игроков, победы на турнирах, поражения в
-                        финале. Да, все это о футболе, но в данном случае виртуальном.
-                        <mark>Схемы, тактики, тренировки</mark>
-                        , все это было внутри игровой приставки. Грубо говоря, это жизнь в цифровом пространстве. Играя
-                        с людьми по всему миру, ты набираешься опыта, далее повышаешь квалификацию и участвуешь в
-                        международных турнирах с чемпионами мира и Европы.
-                    </p>
+            <p style="font-family: 'Courier New', monospace; font-size: 16px; text-align: right; color: #16a085; background-color: lightgray; border: 1px solid #e74c3c;">
+                <strong>Футбол вне поля?</strong> Радость от крутых игроков, победы на турнирах, поражения в
+                финале. Да, все это о футболе, но в данном случае виртуальном.
+                <mark>Схемы, тактики, тренировки</mark>
+                , все это было внутри игровой приставки. Грубо говоря, это жизнь в цифровом пространстве. Играя
+                с людьми по всему миру, ты набираешься опыта, далее повышаешь квалификацию и участвуешь в
+                международных турнирах с чемпионами мира и Европы.
+            </p>
 
-                    <p style="font-family: 'Arial', sans-serif; font-size: 22px; text-align: justify; color: #d35400; border: 2px solid #9b59b6;">
-                        <del>Не каждый выстрел вне закона.</del>
-                        В игру <em>Counter-Strike</em> мне было войти достаточно легко, имея опыт игры в <u>Warface</u>.
-                        Изначально это было для проведения досуга, далее это переросло во что-то большее. Попал в
-                        вузовскую команду по <strong>CS</strong>. Онлайн турниры, разлады и победы. Интересная глава в
-                        жизни. Игра для миллионов людей по всему миру.
-                    </p>
+            <p style="font-family: 'Arial', sans-serif; font-size: 22px; text-align: justify; color: #d35400; border: 2px solid #9b59b6;">
+                <del>Не каждый выстрел вне закона.</del>
+                В игру <em>Counter-Strike</em> мне было войти достаточно легко, имея опыт игры в <u>Warface</u>.
+                Изначально это было для проведения досуга, далее это переросло во что-то большее. Попал в
+                вузовскую команду по <strong>CS</strong>. Онлайн турниры, разлады и победы. Интересная глава в
+                жизни. Игра для миллионов людей по всему миру.
+            </p>
 
-                    <p style="font-family: 'Georgia', serif; font-size: 24px; text-align: center; color: #8e44ad; border: 3px solid #34495e;">
-                        <strong>Может хватит?</strong> Тяжело найти человека младше 30 лет, который ни разу не слышал об
-                        игре <span style="text-decoration: underline;">Dota 2</span>. Игра забирает нервы, силы,
-                        желание, но ты все равно каждый раз возвращаешься и пытаешься доказать себе в первую очередь.
-                        Командные игры всегда будут интересны. В первую очередь это способ социализации. Именно в этой
-                        игре я понял, что каждый человек – индивид, и не все люди во время игры похожи на себя в
-                        реальной жизни.
-                    </p>
-                </div>
-            </div>
+            <p style="font-family: 'Georgia', serif; font-size: 24px; text-align: center; color: #8e44ad; border: 3px solid #34495e;">
+                <strong>Может хватит?</strong> Тяжело найти человека младше 30 лет, который ни разу не слышал об
+                игре <span style="text-decoration: underline;">Dota 2</span>. Игра забирает нервы, силы,
+                желание, но ты все равно каждый раз возвращаешься и пытаешься доказать себе в первую очередь.
+                Командные игры всегда будут интересны. В первую очередь это способ социализации. Именно в этой
+                игре я понял, что каждый человек – индивид, и не все люди во время игры похожи на себя в
+                реальной жизни.
+            </p>
         </div>
     </div>
-
-</div>
-
-<footer>
-    <p>&copy; 2024 Лысенков Филипп</p>
-    <div class="footer-info">
-        <p>Внешние ссылки:</p>
-        <p><a href="https://mgupp.ru">Ссылка на РОСБИОТЕХ</a></p>
+    <div class="footer">
+        <p>&copy; 2024 Лысенков Филипп</p>
+        <div class="footer-info">
+            <p>Внешние ссылки:</p>
+            <p><a href="https://mgupp.ru">Ссылка на РОСБИОТЕХ</a></p>
+        </div>
     </div>
-</footer>
+</div>
 
 </body>
 </html>
